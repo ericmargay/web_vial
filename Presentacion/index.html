@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="SIVSA — Catálogo de productos de señalización vial. Termoplásticos preformados, señalética vertical, ciclovías y más.">
+<title>Catálogo de Productos — SIVSA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Space+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#070A0F;--bg2:#0C1018;--bgc:#0F1520;--bge:#18202C;
+  --a:#F5C518;--ad:rgba(245,197,24,.10);--ag:rgba(245,197,24,.22);--ab:rgba(245,197,24,.28);
+  --b:#3D8EF0;--bd:rgba(61,142,240,.07);--bb:rgba(61,142,240,.14);
+  --t1:#E8EDF5;--t2:#8A95A8;--t3:#4A5568;
+  --bc:rgba(255,255,255,.06);--gl:rgba(61,142,240,.038);
+  --fh:'Poppins',system-ui,sans-serif;
+  --fb:'Poppins',system-ui,sans-serif;
+  --fm:'Space Mono',monospace;
+  --ease:.22s ease;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--t1);font-family:var(--fb);font-size:16px;line-height:1.6;overflow-x:hidden;
+  background-image:linear-gradient(var(--gl) 1px,transparent 1px),linear-gradient(90deg,var(--gl) 1px,transparent 1px);
+  background-size:48px 48px;background-attachment:fixed}
+a{color:inherit;text-decoration:none}
+svg{display:block}
+button{cursor:pointer;font-family:inherit}
+
+/* HEADER */
+.site-header{
+  position:sticky;top:0;z-index:50;
+  background:rgba(7,10,15,.94);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--bc);padding:0 2rem;
+  display:flex;align-items:center;justify-content:space-between;height:64px}
+.header-logo{display:flex;align-items:center;gap:10px}
+.logo-word{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:3px;color:var(--t1)}
+.logo-dot{color:var(--a);font-size:9px}
+.logo-tag{font-size:11px;color:var(--t3);letter-spacing:.5px;border-left:1px solid var(--bb);padding-left:10px;margin-left:4px}
+.header-back{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--t2);
+  padding:.45rem .9rem;border:1px solid var(--bc);border-radius:4px;
+  transition:color var(--ease),border-color var(--ease)}
+.header-back:hover{color:var(--a);border-color:var(--ab)}
+.header-back svg{width:14px;height:14px}
+
+/* PAGE TITLE */
+.cat-hero{padding:3.5rem 2rem 2rem;max-width:1240px;margin:0 auto}
+.cat-hero h1{font-family:var(--fh);font-size:clamp(1.8rem,4vw,3rem);font-weight:700;margin-bottom:.5rem}
+.cat-hero p{font-size:15px;color:var(--t2);max-width:560px}
+
+/* CONTROLS: SEARCH + FILTER */
+.controls{max-width:1240px;margin:0 auto;padding:0 2rem 2rem;
+  display:flex;flex-direction:column;gap:1.25rem}
+.search-wrap{position:relative;max-width:380px}
+.search-wrap input{
+  width:100%;background:var(--bgc);border:1px solid var(--bc);border-radius:4px;
+  padding:.65rem 1rem .65rem 2.6rem;color:var(--t1);font-size:14px;outline:none;
+  transition:border-color var(--ease);font-family:var(--fb)}
+.search-wrap input::placeholder{color:var(--t3)}
+.search-wrap input:focus{border-color:var(--bb)}
+.search-wrap svg{position:absolute;left:.85rem;top:50%;transform:translateY(-50%);
+  width:14px;height:14px;color:var(--t3);pointer-events:none}
+.filters{display:flex;gap:.5rem;flex-wrap:wrap}
+.filter-btn{
+  background:none;border:1px solid var(--bc);border-radius:3px;
+  padding:.4rem 1rem;font-size:12.5px;font-weight:600;color:var(--t2);
+  letter-spacing:.4px;transition:all var(--ease)}
+.filter-btn:hover{border-color:var(--bb);color:var(--t1)}
+.filter-btn.active{background:var(--a);border-color:var(--a);color:var(--bg)}
+
+/* PRODUCT GRID */
+.cat-grid{
+  max-width:1240px;margin:0 auto;padding:0 2rem 4rem;
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+.product-card{
+  background:var(--bgc);border:1px solid var(--bc);border-radius:6px;
+  overflow:hidden;display:flex;flex-direction:column;
+  transition:border-color var(--ease),transform var(--ease),box-shadow var(--ease);
+  animation:cardIn .4s ease both}
+@keyframes cardIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.product-card:hover{border-color:var(--bb);transform:translateY(-3px);box-shadow:0 12px 32px rgba(0,0,0,.3)}
+
+.card-visual{
+  position:relative;height:200px;overflow:hidden;
+  display:flex;align-items:center;justify-content:center;cursor:pointer}
+.card-visual svg{width:100%;height:100%;position:absolute;inset:0}
+.card-photo-count{
+  position:absolute;bottom:.6rem;right:.6rem;
+  background:rgba(7,10,15,.8);backdrop-filter:blur(6px);
+  border:1px solid var(--bc);border-radius:3px;
+  padding:.2rem .55rem;font-family:var(--fm);font-size:10px;color:var(--t2);
+  display:flex;align-items:center;gap:5px}
+.card-photo-count svg{width:11px;height:11px}
+.card-badge{
+  position:absolute;top:.6rem;left:.6rem;
+  background:var(--a);color:var(--bg);
+  font-family:var(--fm);font-size:9px;font-weight:700;letter-spacing:1px;
+  padding:.2rem .55rem;border-radius:2px}
+
+.card-body{padding:1.2rem;flex:1;display:flex;flex-direction:column;gap:.75rem}
+.card-cat{font-family:var(--fm);font-size:9.5px;letter-spacing:2px;text-transform:uppercase;color:var(--t3)}
+.card-name{font-size:1rem;font-weight:700;line-height:1.3}
+.card-desc{font-size:13px;color:var(--t2);line-height:1.6;flex:1}
+.card-actions{display:flex;gap:.6rem;margin-top:.25rem}
+.btn-gallery{
+  flex:1;background:none;border:1px solid var(--bm);border-radius:3px;
+  padding:.55rem;font-size:12.5px;font-weight:600;color:var(--b);
+  display:flex;align-items:center;justify-content:center;gap:6px;
+  transition:background var(--ease),border-color var(--ease),color var(--ease)}
+.btn-gallery:hover{background:var(--bd);border-color:var(--b);color:var(--t1)}
+.btn-gallery svg{width:14px;height:14px}
+.btn-quote{
+  flex:1;background:var(--a);border:none;border-radius:3px;
+  padding:.55rem;font-size:12.5px;font-weight:700;color:var(--bg);
+  display:flex;align-items:center;justify-content:center;gap:6px;
+  transition:background var(--ease),transform var(--ease)}
+.btn-quote:hover{background:#FFD43B;transform:translateY(-1px)}
+.btn-quote svg{width:14px;height:14px}
+
+/* EMPTY STATE */
+.empty-state{
+  grid-column:1/-1;text-align:center;padding:4rem 2rem;
+  color:var(--t3);font-size:14px}
+.empty-state svg{width:40px;height:40px;margin:0 auto 1rem;opacity:.3}
+
+/* LIGHTBOX */
+.lb{
+  position:fixed;inset:0;z-index:200;
+  display:flex;flex-direction:column;
+  background:rgba(4,6,10,.96);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  opacity:0;pointer-events:none;transition:opacity .28s ease}
+.lb.open{opacity:1;pointer-events:all}
+
+.lb-top{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:.9rem 1.5rem;border-bottom:1px solid var(--bc);flex-shrink:0}
+.lb-top-left{display:flex;align-items:center;gap:1rem}
+.lb-cat{font-family:var(--fm);font-size:9.5px;letter-spacing:2px;text-transform:uppercase;color:var(--a)}
+.lb-name{font-size:1.1rem;font-weight:700}
+.lb-close{
+  background:none;border:1px solid var(--bc);border-radius:3px;
+  width:36px;height:36px;display:flex;align-items:center;justify-content:center;
+  color:var(--t2);font-size:18px;transition:border-color var(--ease),color var(--ease)}
+.lb-close:hover{border-color:var(--t2);color:var(--t1)}
+
+.lb-body{flex:1;display:grid;grid-template-columns:1fr 340px;overflow:hidden;min-height:0}
+
+/* Visual panel */
+.lb-visual-wrap{
+  position:relative;background:var(--bg2);display:flex;align-items:center;justify-content:center;overflow:hidden}
+.lb-visual-frame{width:100%;height:100%;position:relative;overflow:hidden}
+.lb-slide{
+  position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  transition:opacity .3s ease,transform .3s ease}
+.lb-slide.active{opacity:1;transform:translateX(0);z-index:1}
+.lb-slide.prev-exit{opacity:0;transform:translateX(-3%);z-index:0}
+.lb-slide.next-exit{opacity:0;transform:translateX(3%);z-index:0}
+.lb-slide svg{width:100%;height:100%;object-fit:cover}
+.lb-slide-label{
+  position:absolute;bottom:1.2rem;left:1.2rem;
+  background:rgba(7,10,15,.85);border:1px solid var(--bc);
+  border-radius:3px;padding:.35rem .7rem;
+  font-family:var(--fm);font-size:10px;color:var(--t2)}
+
+/* Nav arrows */
+.lb-arr{
+  position:absolute;top:50%;transform:translateY(-50%);
+  background:rgba(7,10,15,.8);border:1px solid var(--bc);border-radius:3px;
+  width:40px;height:40px;display:flex;align-items:center;justify-content:center;
+  color:var(--t1);font-size:18px;z-index:10;
+  transition:background var(--ease),border-color var(--ease)}
+.lb-arr:hover{background:rgba(245,197,24,.15);border-color:var(--ab)}
+.lb-arr.left{left:1rem}
+.lb-arr.right{right:1rem}
+
+/* Thumbnail strip */
+.lb-thumbs{
+  position:absolute;bottom:1rem;left:50%;transform:translateX(-50%);
+  display:flex;gap:.4rem;z-index:10}
+.lb-thumb{
+  width:52px;height:36px;border-radius:3px;overflow:hidden;
+  border:2px solid transparent;cursor:pointer;
+  transition:border-color var(--ease),opacity var(--ease);opacity:.5}
+.lb-thumb.active{border-color:var(--a);opacity:1}
+.lb-thumb svg{width:100%;height:100%}
+
+/* Info panel */
+.lb-info{
+  border-left:1px solid var(--bc);padding:1.5rem;
+  display:flex;flex-direction:column;gap:1.25rem;overflow-y:auto}
+.lb-img-desc{font-size:13px;color:var(--t2);line-height:1.65;
+  padding:.75rem;background:var(--bge);border-radius:3px}
+.lb-specs-title{font-family:var(--fm);font-size:9.5px;letter-spacing:2px;text-transform:uppercase;color:var(--t3)}
+.lb-specs{display:flex;flex-direction:column;gap:.5rem}
+.lb-spec{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;
+  padding:.5rem 0;border-bottom:1px solid var(--bc);font-size:13px}
+.lb-spec:last-child{border:none}
+.spec-k{color:var(--t3);flex-shrink:0}
+.spec-v{color:var(--t1);font-weight:600;text-align:right}
+.lb-cta{
+  margin-top:auto;display:flex;flex-direction:column;gap:.6rem}
+.lb-cta p{font-size:12px;color:var(--t3)}
+.btn-wa-full{
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  padding:.75rem 1rem;background:#25D366;border:none;border-radius:4px;
+  color:#fff;font-weight:700;font-size:14px;
+  transition:background var(--ease),transform var(--ease)}
+.btn-wa-full:hover{background:#1ebe5c;transform:translateY(-1px)}
+.btn-wa-full svg{width:18px;height:18px}
+
+/* FOOTER */
+.cat-footer{
+  border-top:1px solid var(--bc);padding:1.5rem 2rem;
+  display:flex;align-items:center;justify-content:space-between;
+  font-family:var(--fm);font-size:11px;color:var(--t3)}
+.cat-footer a{color:var(--t2);transition:color var(--ease)}
+.cat-footer a:hover{color:var(--a)}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .cat-grid{grid-template-columns:repeat(2,1fr)}
+  .lb-body{grid-template-columns:1fr}
+  .lb-info{max-height:240px;border-left:none;border-top:1px solid var(--bc)}
+}
+@media(max-width:600px){
+  .cat-grid{grid-template-columns:1fr;padding:0 1.25rem 3rem}
+  .controls,.cat-hero{padding-left:1.25rem;padding-right:1.25rem}
+  .site-header{padding:0 1.25rem}
+  .logo-tag{display:none}
+  .lb-body{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-logo">
+    <span class="logo-dot">●</span>
+    <span class="logo-word">SIVSA</span>
+    <span class="logo-tag">Catálogo de Productos</span>
+  </div>
+  <a href="../index.html" class="header-back">
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+      <path d="M10 4L6 8l4 4"/>
+    </svg>
+    Volver al sitio
+  </a>
+</header>
+
+<!-- PAGE TITLE -->
+<div class="cat-hero">
+  <h1>Catálogo de <em style="color:var(--a);font-style:italic">Productos</em></h1>
+  <p>Materiales y sistemas de señalización certificados. Selecciona un producto para ver galería de imágenes, especificaciones técnicas y cotizar directamente.</p>
+</div>
+
+<!-- CONTROLS -->
+<div class="controls">
+  <div class="search-wrap">
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+      <circle cx="6.5" cy="6.5" r="4"/><line x1="10" y1="10" x2="14" y2="14"/>
+    </svg>
+    <input type="text" id="search" placeholder="Buscar producto..." autocomplete="off" aria-label="Buscar producto">
+  </div>
+  <div class="filters" id="filters" role="group" aria-label="Filtrar por categoría"></div>
+</div>
+
+<!-- PRODUCT GRID -->
+<div class="cat-grid" id="grid" aria-live="polite"></div>
+
+<!-- LIGHTBOX -->
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Galería de producto">
+  <div class="lb-top">
+    <div class="lb-top-left">
+      <span class="lb-cat" id="lb-cat"></span>
+      <span class="lb-name" id="lb-name"></span>
+    </div>
+    <button class="lb-close" onclick="closeLB()" aria-label="Cerrar galería">✕</button>
+  </div>
+  <div class="lb-body">
+    <div class="lb-visual-wrap">
+      <div class="lb-visual-frame" id="lb-frame"></div>
+      <button class="lb-arr left" onclick="navLB(-1)" aria-label="Imagen anterior">←</button>
+      <button class="lb-arr right" onclick="navLB(1)" aria-label="Imagen siguiente">→</button>
+      <div class="lb-thumbs" id="lb-thumbs"></div>
+    </div>
+    <div class="lb-info">
+      <div class="lb-img-desc" id="lb-img-desc"></div>
+      <div class="lb-specs-title">Especificaciones técnicas</div>
+      <div class="lb-specs" id="lb-specs"></div>
+      <div class="lb-cta">
+        <p>¿Te interesa este producto? Cotiza sin costo.</p>
+        <a class="btn-wa-full" id="lb-wa" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Cotizar por WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="cat-footer">
+  <span>© 2025 SIVSA — Servicios de Ingeniería Vial S.A. de C.V. · Diseño por <span style="color:var(--a)">Aminoacid</span></span>
+  <a href="tel:+524426417958">(442) 641 7958</a>
+</footer>
+
+<script>
+/* ── SVG SCENE GENERATORS ─────────────────────────────────────────── */
+const S = {
+  /* Road with center dashes — amber */
+  roadDashes:(a=1)=>`<svg viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg">
+    <rect width="400" height="220" fill="#0a0d14"/>
+    <rect x="0" y="80" width="400" height="60" fill="#111620"/>
+    <rect x="0" y="78" width="400" height="2" fill="#F5C518" opacity=".6"/>
+    <rect x="0" y="140" width="400" height="2" fill="#F5C518" opacity=".6"/>
+    ${[0,1,2,3,4].map(i=>`<rect x="${i*85+10}" y="108" width="52" height="4" rx="2" fill="#F5C518" opacity="${a}"/>`).join('')}
+    <rect x="0" y="78" width="400" height="2" fill="#E8EDF5" opacity=".25"/>
+    <rect x="0" y="140" width="400" height="2" fill="#E8EDF5" opacity=".25"/>
+  </svg>`,
+
+  /* Crosswalk — white stripes */
+  crosswalk:(tint='#F5C518')=>`<svg viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg">
+    <rect width="400" height="220" fill="#0a0d14"/>
+    <rect x="0" y="90" width="400" height="40" fill="#111620"/>
+    ${[0,1,2,3,4,5,6].map(i=>`<rect x="${i*52+20}" y="90" width="32" height="40" rx="2" fill="#E8EDF5" opacity=".88"/>`).join('')}
+    <rect x="0" y="88" width="400" height="2" fill="${tint}" opacity=".5"/>
+    <rect x="0" y="132" width="400" height="2" fill="${tint}" opacity=".5"/>
+  </svg>`,
+
+  /* Arrow — turn left */
+  arrow:(color='#F5C518')=>`<svg viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg">
+    <rect width="400" height="220" fill="#0a0d14"/>
+    <rect x="0" y="60" width="400" height="100" fill="#111620"/>
+    <g transform="translate(170,70)">
+      <rect x="25" y="0" width="12" height="60" rx="6" fill="${color}" opacity=".9"/>
+      <polygon points="0,30 37,5 37,55" fill="${color}" opacity=".9"/>
+    </g>
+    <rect x="0" y="58" width="400" height="2" fill="${color}" opacity=".35"/>
+    <rect x="0" y="162" width="400" height="2" fill="${color}" opacity=".35"/>
+  </svg>`,
+
+  /* Bike lane — green */
+  bikeLane:()=>`<svg viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg">
+    <rect width="400" height="220" fill="#0a0d14"/>
+    <rect x="60" y="0" width="100" height="220" fill="rgba(37,211,102,.08)"/>
+    <rect x="60" y="0" width="2" height="220" fill="#25D366" opacity=".5"/>
+    <rect x="160" y="0" width="2" height="220" fill="#25D366" opacity=".5"/>
+    <g transform="translate(95,85)" fill="#25D366" opacity=".8">
+      <circle cx="20" cy="12" r="5" stroke="#25D366" stroke-width="2.5" fill="none"/>
+      <circle cx="0" cy="32" r="8" stroke="#25D366" stroke-width="2.5" fill="none"/>
+      <circle cx="40" cy="32" r="8" stroke="#25D366" stroke-width="2.5" fill="none"/>
+      <line x1="20" y1="17" x2="20" y2="28" stroke="#25D366" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="20" y1="28" x2="0" y2="24" stroke="#25D366" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="20" y1="28" x2="40" y2="24" stroke="#25D366" stroke-width="2.5" stroke-linecap="round"/>
+    </g>
+    ${[0,1,2,3,4].map(i=>`<rect x="${i*52+180}" y="108" width="30" height="4" rx="2" fill="#F5C518" opacity=".6"/>`).join('')}
+  </svg>`,
+
+  /* Vertical sign */
+  sign:(color='#e53e3e',text='ALTO')=>`<svg viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg">
+    <rect width="400" height="220" fill="#0a0d14"/>
+    <line x1="200" y1="170" x2="200" y2="220" stroke="#8A95A8" stroke-width="6"/>
+    <line x1="185" y1="220" x2="215" y2="220" stroke="#8A95A8" stroke-width="4"/>
+    <polygon points="200,30 240,50 240,110 200,130 160,110 160,50" fill="${color}" stroke="white" stroke-width="4"/>
+    <text x="200" y="90" text-anchor="middle" font-family="Poppins,sans-serif" font-weight="700" font-size="22" fill="white">${text}</text>
+    <rect x="120" y="168" width="160" height="4" rx="2" fill="#3D8EF0" opacity=".4"/>
+  </svg>`,
+
+  /* Speed sign */
+  speedSign:(n='60')=>`<svg viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg">
+    <rect width="400" height="220" fill="#0a0d14"/>
+    <line x1="200" y1="165" x2="200" y2="220" stroke="#8A95A8" stroke-width="6"/>
+    <circle cx="200" cy="95" r="62" fill="white" stroke="#e53e3e" stroke-width="8"/>
+    <circle cx="200" cy="95" r="50" fill="white"/>
+    <text x="200" y="108" text-anchor="middle" font-family="Poppins,sans-serif" font-weight="700" font-size="42" fill="#1a202c">${n}</text>
+  </svg>`,
+
+  /* Industrial floor */
+  industrial:()=>`<svg viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg">
+    <rect width="400" height="220" fill="#0a0d14"/>
+    <rect x="0" y="0" width="80" height="220" fill="rgba(245,197,24,.06)"/>
+    <rect x="0" y="0" width="4" height="220" fill="#F5C518" opacity=".7"/>
+    <rect x="76" y="0" width="4" height="220" fill="#F5C518" opacity=".7"/>
+    ${[0,1,2,3,4].map(i=>`<rect x="4" y="${i*44+4}" width="72" height="22" rx="0" fill="#F5C518" opacity="${i%2===0?.55:.0}"/>`).join('')}
+    ${[0,1,2].map(i=>`<rect x="${i*140+120}" y="0" width="80" height="220" fill="rgba(37,211,102,.04)" stroke="#25D366" stroke-width="1.5" stroke-opacity=".35" fill-opacity="1"/>`).join('')}
+    <text x="310" y="118" text-anchor="middle" font-family="Poppins,sans-serif" font-weight="700" font-size="11" fill="#25D366" opacity=".6">ÁREA</text>
+    <text x="310" y="130" text-anchor="middle" font-family="Poppins,sans-serif" font-weight="700" font-size="11" fill="#25D366" opacity=".6">SEGURA</text>
+  </svg>`,
+
+  /* Parking grid */
+  parking:()=>`<svg viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg">
+    <rect width="400" height="220" fill="#0a0d14"/>
+    ${[0,1,2,3,4,5].map(i=>`<rect x="${i*66+4}" y="20" width="1.5" height="180" fill="#E8EDF5" opacity=".55"/>`).join('')}
+    <rect x="4" y="20" width="392" height="1.5" fill="#E8EDF5" opacity=".55"/>
+    <rect x="4" y="200" width="392" height="1.5" fill="#E8EDF5" opacity=".55"/>
+    <rect x="4" y="20" width="392" height="80" fill="rgba(61,142,240,.05)"/>
+    <text x="37" y="67" text-anchor="middle" font-family="Poppins,sans-serif" font-size="14" font-weight="700" fill="#E8EDF5" opacity=".15">1</text>
+    <text x="103" y="67" text-anchor="middle" font-family="Poppins,sans-serif" font-size="14" font-weight="700" fill="#E8EDF5" opacity=".15">2</text>
+    <text x="169" y="67" text-anchor="middle" font-family="Poppins,sans-serif" font-size="14" font-weight="700" fill="#E8EDF5" opacity=".15">3</text>
+    <text x="200" y="170" text-anchor="middle" font-family="Poppins,sans-serif" font-size="11" font-weight="700" fill="#3D8EF0" opacity=".4">♿  DISCAPACIDAD</text>
+  </svg>`,
+
+  /* Airport taxiway */
+  airport:()=>`<svg viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg">
+    <rect width="400" height="220" fill="#0a0d14"/>
+    <rect x="0" y="90" width="400" height="40" fill="#111620"/>
+    ${[0,1,2,3,4,5,6,7,8].map(i=>`<rect x="${i*50+4}" y="108" width="30" height="4" rx="2" fill="#F5C518" opacity=".9"/>`).join('')}
+    <rect x="0" y="88" width="400" height="2" fill="#F5C518" opacity=".6"/>
+    <rect x="0" y="132" width="400" height="2" fill="#F5C518" opacity=".6"/>
+    <rect x="150" y="60" width="100" height="30" rx="2" fill="rgba(245,197,24,.12)" stroke="#F5C518" stroke-width="1" opacity=".7"/>
+    <text x="200" y="80" text-anchor="middle" font-family="Poppins,sans-serif" font-size="10" font-weight="700" fill="#F5C518" opacity=".8">A4</text>
+  </svg>`,
+
+  /* Material close-up texture */
+  texture:(color='#F5C518')=>`<svg viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <pattern id="beads" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+        <circle cx="10" cy="10" r="1.5" fill="white" opacity=".4"/>
+        <circle cx="3" cy="5" r="1" fill="white" opacity=".25"/>
+        <circle cx="16" cy="16" r="1.2" fill="white" opacity=".35"/>
+      </pattern>
+    </defs>
+    <rect width="400" height="220" fill="${color}" opacity=".85"/>
+    <rect width="400" height="220" fill="#0a0d14" opacity=".3"/>
+    <rect width="400" height="220" fill="url(#beads)"/>
+    <text x="200" y="120" text-anchor="middle" font-family="Space Mono,monospace" font-size="10" fill="rgba(255,255,255,.3)" letter-spacing="3">MICROESFERAS DE VIDRIO INTEGRADAS</text>
+  </svg>`,
+
+  /* Night retroreflection simulation */
+  night:(color='#F5C518')=>`<svg viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg">
+    <rect width="400" height="220" fill="#020408"/>
+    <rect x="0" y="95" width="400" height="30" fill="#0a0d14"/>
+    <defs>
+      <radialGradient id="beam" cx="50%" cy="100%" r="80%">
+        <stop offset="0%" stop-color="white" stop-opacity=".08"/>
+        <stop offset="100%" stop-color="white" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <rect width="400" height="220" fill="url(#beam)"/>
+    ${[0,1,2,3,4].map(i=>`<rect x="${i*85+10}" y="104" width="52" height="6" rx="3" fill="${color}" opacity=".95" filter="url(#glow)"/>`).join('')}
+    <defs>
+      <filter id="glow">
+        <feGaussianBlur stdDeviation="3" result="blur"/>
+        <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+      </filter>
+    </defs>
+    ${[0,1,2,3,4].map(i=>`<rect x="${i*85+10}" y="104" width="52" height="6" rx="3" fill="${color}" opacity=".9"/>`).join('')}
+    <text x="200" y="190" text-anchor="middle" font-family="Space Mono,monospace" font-size="9" fill="rgba(255,255,255,.25)" letter-spacing="2">VISIBILIDAD NOCTURNA — RETROREFLECTIVIDAD ALTA</text>
+  </svg>`,
+
+  /* School pedestrian */
+  school:()=>`<svg viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg">
+    <rect width="400" height="220" fill="#0a0d14"/>
+    ${[0,1,2,3,4,5,6].map(i=>`<rect x="${i*52+20}" y="80" width="32" height="60" rx="1" fill="#F5C518" opacity=".88"/>`).join('')}
+    <rect x="0" y="78" width="400" height="3" fill="#F5C518" opacity=".7"/>
+    <rect x="0" y="142" width="400" height="3" fill="#F5C518" opacity=".7"/>
+    <g transform="translate(340,40)" fill="#F5C518">
+      <circle cx="12" cy="8" r="5"/>
+      <rect x="8" y="14" width="8" height="16" rx="4"/>
+      <line x1="4" y1="20" x2="20" y2="20" stroke="#F5C518" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="8" y1="30" x2="6" y2="40" stroke="#F5C518" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="16" y1="30" x2="18" y2="40" stroke="#F5C518" stroke-width="2.5" stroke-linecap="round"/>
+    </g>
+    <text x="30" y="200" font-family="Poppins,sans-serif" font-size="9" font-weight="700" fill="#F5C518" opacity=".5" letter-spacing="2">ZONA ESCOLAR</text>
+  </svg>`,
+};
+
+/* ── PRODUCT DATA ─────────────────────────────────────────────────── */
+const CATS = [
+  {id:'all',    label:'Todos'},
+  {id:'horizontal', label:'Señalización Horizontal'},
+  {id:'vertical',   label:'Señalización Vertical'},
+  {id:'ciclovias',  label:'Ciclovías y Peatonal'},
+  {id:'industrial', label:'Industrial'},
+  {id:'aeropuertos',label:'Aeropuertos'},
+  {id:'estacionamientos',label:'Estacionamientos'},
+];
+
+const PRODUCTS = [
+  {
+    id:1, cat:'horizontal', catLabel:'Señalización Horizontal', badge:'Triple-A PPG',
+    name:'Termoplástico Preformado MMax',
+    desc:'Sistema de alta durabilidad para líneas de carril, guiones y marcas de alto tránsito. Instalación en frío mediante calor de inducción.',
+    specs:[['Durabilidad','5–7 años'],['Aplicación','En frío con calor'],['Colores','Blanco · Amarillo'],['Retroreflectividad','Alta — integrada'],['Norma','NMX-SCT-2-1-03'],['Proveedor','Ennis Flint']],
+    images:[
+      {svg:S.roadDashes(),label:'Vista de aplicación',desc:'Guiones centrales en carretera federal de alto tráfico. Apariencia uniforme a 12 meses de instalación.'},
+      {svg:S.texture(),label:'Detalle del material',desc:'Superficie del termoplástico con microesferas de vidrio integradas que garantizan retroreflectividad máxima.'},
+      {svg:S.night(),label:'Visibilidad nocturna',desc:'Bajo iluminación de faros a 100m. El material devuelve la luz hacia el conductor con alta intensidad.'},
+    ]
+  },
+  {
+    id:2, cat:'horizontal', catLabel:'Señalización Horizontal',
+    name:'Paso Peatonal Preformado',
+    desc:'Franjas de cruce peatonal en termoplástico preformado. Alta visibilidad, instalación rápida y mínima interferencia al tráfico.',
+    specs:[['Durabilidad','4–6 años'],['Ancho de franja','45 cm estándar'],['Espaciado','45 cm'],['Colores','Blanco'],['Retroreflectividad','Alta'],['Norma','SCT-2-1-03']],
+    images:[
+      {svg:S.crosswalk(),label:'Vista aérea del cruce',desc:'Paso peatonal con 8 franjas instalado en intersección urbana de alta afluencia peatonal.'},
+      {svg:S.texture('#E8EDF5'),label:'Textura retroreflectiva',desc:'Superficie con perfil antideslizante y microesferas de vidrio integradas para visibilidad en mojado.'},
+      {svg:S.night('#E8EDF5'),label:'Retroreflexión nocturna',desc:'Visibilidad del paso peatonal bajo iluminación vehicular — resultado crítico para zonas escolares.'},
+    ]
+  },
+  {
+    id:3, cat:'horizontal', catLabel:'Señalización Horizontal',
+    name:'Flechas y Símbolos Preformados',
+    desc:'Flechas de dirección, símbolos de bicicleta, leyendas ALTO y CEDA EL PASO en termoplástico preformado.',
+    specs:[['Material','Termoplástico preformado'],['Durabilidad','5–6 años'],['Colores','Blanco · Amarillo · Verde'],['Dimensiones','Según norma SCT'],['Retroreflectividad','Media-alta'],['Aplicación','En frío']],
+    images:[
+      {svg:S.arrow(),label:'Flecha de vuelta',desc:'Flecha direccional instalada en carril de acceso a vialidad primaria en Zapopan, Jalisco.'},
+      {svg:S.crosswalk('#3D8EF0'),label:'Símbolo ciclista',desc:'Símbolo preformado de ciclovía instalado en carril exclusivo con material de alto contraste.'},
+      {svg:S.texture('#3D8EF0'),label:'Detalle de acabado',desc:'Vista macro del material — perfil texturizado para mejor adhesión y agarre del neumático.'},
+    ]
+  },
+  {
+    id:4, cat:'horizontal', catLabel:'Señalización Horizontal',
+    name:'Termoplástico Convencional',
+    desc:'Material fundido aplicado en caliente mediante extrusora. Alta adhesión a la carpeta asfáltica y resistencia a tráfico pesado.',
+    specs:[['Durabilidad','3–5 años'],['Aplicación','Caliente — extrusora'],['Temp. aplicación','180–200 °C'],['Colores','Blanco · Amarillo'],['Retroreflectividad','Media-alta'],['Norma','NMX-SCT-2-1-03']],
+    images:[
+      {svg:S.roadDashes(.7),label:'Línea continua',desc:'Línea de orilla continua aplicada en carretera estatal de 4 carriles — resistencia verificada a tráfico pesado.'},
+      {svg:S.texture('#e8a200'),label:'Perfil del material',desc:'Sección transversal con espesor típico de 1.8–2.2mm — mayor masa que la pintura convencional.'},
+      {svg:S.night('#e8a200'),label:'Rendimiento nocturno',desc:'Retroreflectividad a 2 años de instalación en zona de tráfico intenso.'},
+    ]
+  },
+  {
+    id:5, cat:'horizontal', catLabel:'Señalización Horizontal',
+    name:'Pintura Acrílica de Tránsito',
+    desc:'Pintura base agua de secado rápido para señalización de bajo y mediano tránsito. Aplicación con máquina autopropulsada.',
+    specs:[['Durabilidad','1–2 años'],['Base','Agua acrílica'],['Secado','30–45 min'],['Colores','Blanco · Amarillo'],['Retroreflectividad','Media'],['Uso ideal','Zonas residenciales · Bajo tráfico']],
+    images:[
+      {svg:S.roadDashes(.5),label:'Aplicación en vía local',desc:'Guiones de carril en colonia residencial — solución económica para vialidades de bajo tránsito.'},
+      {svg:S.texture('#fbbf24'),label:'Textura post-aplicación',desc:'Superficie con microesferas drop-on aplicadas durante la instalación para retroreflectividad inmediata.'},
+      {svg:S.parking(),label:'Uso en estacionamiento',desc:'Delimitación de cajones en área comercial — acabado limpio con máquina autopropulsada.'},
+    ]
+  },
+  {
+    id:6, cat:'vertical', catLabel:'Señalización Vertical', badge:'Tipo III – IV',
+    name:'Señal Reglamentaria Retroreflectiva',
+    desc:'Señales ALTO, velocidad máxima, CEDA EL PASO y demás reglamentarias con lámina retroreflectiva Tipo III o IV.',
+    specs:[['Sustrato','Aluminio anodizado 2mm'],['Retroreflectividad','Tipo III · Tipo IV'],['Vida útil lámina','10 años'],['Marco','Perfil omega galvanizado'],['Dimensiones','Según SCT-2-2-01'],['Norma','NMX-SCT-2-2-01']],
+    images:[
+      {svg:S.sign('#e53e3e','ALTO'),label:'Señal de ALTO octagonal',desc:'Señal ALTO en lámina retroreflectiva Tipo IV instalada en intersección urbana de Querétaro.'},
+      {svg:S.speedSign('60'),label:'Señal de velocidad máxima',desc:'Límite de velocidad 60 km/h con fondo blanco y orla roja — cumple NMX-SCT-2-2-01.'},
+      {svg:S.texture('#dc2626'),label:'Lámina retroreflectiva Tipo IV',desc:'Detalle de lámina prismática de alta intensidad — visible a 300m bajo iluminación vehicular.'},
+    ]
+  },
+  {
+    id:7, cat:'vertical', catLabel:'Señalización Vertical',
+    name:'Señal Preventiva',
+    desc:'Señales de advertencia en forma de rombo para indicar condiciones especiales: curvas, escuelas, puentes, topes y más.',
+    specs:[['Forma','Rombo o rectángulo'],['Color','Amarillo / Negro'],['Sustrato','Aluminio 2mm'],['Lámina','Tipo I o III'],['Vida útil','7–10 años'],['Norma','NMX-SCT-2-2-01']],
+    images:[
+      {svg:S.sign('#F5C518','⚠'),label:'Señal preventiva estándar',desc:'Señal preventiva de cruce escolar instalada en avenida escolar con lámina Tipo III.'},
+      {svg:S.sign('#F5C518','TOPE'),label:'Señal de tope',desc:'Advertencia de tope en lámina amarilla — uno de los señalamientos más comunes en zonas urbanas.'},
+      {svg:S.texture('#c9a000'),label:'Lámina Tipo III',desc:'Lámina Engineering Grade Prismática — relación costo-efectividad óptima para vialidades secundarias.'},
+    ]
+  },
+  {
+    id:8, cat:'vertical', catLabel:'Señalización Vertical',
+    name:'Señal Informativa de Destino',
+    desc:'Señales de información para guiar al usuario hacia destinos, servicios y puntos de interés en vialidades primarias.',
+    specs:[['Color','Verde / Blanco'],['Sustrato','Aluminio 2mm'],['Lámina','Tipo III o IV alta intensidad'],['Tipografía','SCT estándar'],['Tamaño','Variable por vía'],['Norma','NMX-SCT-2-2-01']],
+    images:[
+      {svg:S.sign('#276749','CENTRO →'),label:'Señal de destino',desc:'Señal informativa verde de destino instalada en boulevard de acceso a zona centro.'},
+      {svg:S.sign('#1a4a6b','AEROPUERTO ✈'),label:'Señal de aeropuerto',desc:'Señalización informativa de acceso a aeropuerto con símbolo internacional y lámina Tipo IV.'},
+      {svg:S.texture('#276749'),label:'Lámina alta intensidad',desc:'Lámina Tipo IV prismática — retroreflectividad superior para uso en vialidades de alta velocidad.'},
+    ]
+  },
+  {
+    id:9, cat:'ciclovias', catLabel:'Ciclovías y Peatonal', badge:'Ennis Flint',
+    name:'Demarcación Carril Bicicleta',
+    desc:'Sistema integral de señalización para carriles exclusivos de bicicleta: líneas, flechas-bici y símbolos en preformado o pintura.',
+    specs:[['Material','Preformado o termoplástico'],['Color','Verde · Blanco'],['Durabilidad','4–6 años'],['Símbolo bici','Conforme SCT'],['Línea de carril','15 cm ancho'],['Norma','SCT-Ciclovías 2019']],
+    images:[
+      {svg:S.bikeLane(),label:'Carril bicicleta exclusivo',desc:'Ciclovía con demarcación preformada verde — Corregidora, Querétaro. Proyecto 2022–2023.'},
+      {svg:S.arrow('#25D366'),label:'Flecha-bici preformada',desc:'Símbolo de carril bici con flecha directional — instalación en frío, resistencia 5 años comprobada.'},
+      {svg:S.texture('#25D366'),label:'Material preformado verde',desc:'Termoplástico preformado en color verde — alta durabilidad y color estable sin decoloración UV.'},
+    ]
+  },
+  {
+    id:10, cat:'ciclovias', catLabel:'Ciclovías y Peatonal',
+    name:'Paso Seguro Escolar',
+    desc:'Demarcación de alta visibilidad para zonas de cruce escolar: pasos amarillos, leyendas, flechas de advertencia y señalización vertical.',
+    specs:[['Color','Amarillo predominante'],['Material','Preformado o termoplástico'],['Visibilidad','Alta — Tipo IV opcional'],['Durabilidad','4–6 años'],['Componentes','Franja + leyenda + señal'],['Aplicaciones','Zonas K-12']],
+    images:[
+      {svg:S.school(),label:'Paso seguro completo',desc:'Sistema de paso seguro escolar instalado en acceso a primaria — Zapopan, Jalisco. 2021.'},
+      {svg:S.crosswalk('#F5C518'),label:'Franjas amarillas de alta visibilidad',desc:'Paso peatonal en amarillo para contraste máximo con la carpeta asfáltica oscura.'},
+      {svg:S.night('#F5C518'),label:'Retroreflexión nocturna',desc:'Visibilidad del cruce escolar en condiciones de iluminación reducida — resultado real a 80m.'},
+    ]
+  },
+  {
+    id:11, cat:'industrial', catLabel:'Señalización Industrial',
+    name:'Marcaje Industrial de Piso',
+    desc:'Demarcación de áreas de trabajo, pasillos, zonas de riesgo y señalización de seguridad en plantas industriales y almacenes.',
+    specs:[['Material','Pintura epóxica o preformado'],['Colores','Amarillo · Blanco · Rojo · Verde'],['Resistencia','Tráfico de montacargas'],['Durabilidad','2–4 años'],['Norma','NOM-003-SEGOB'],['Usos','Planta · Almacén · CEDIS']],
+    images:[
+      {svg:S.industrial(),label:'Planta de producción',desc:'Demarcación de pasillos y zonas de trabajo en CEDIS logístico — Amazon Tlajomulco, 2022.'},
+      {svg:S.texture('#F5C518'),label:'Cinta preformada de advertencia',desc:'Material preformado para bordes de advertencia y demarcación de zonas de peligro.'},
+      {svg:S.crosswalk('#25D366'),label:'Área de tránsito peatonal',desc:'Separación visual de zona peatonal y zona de montacargas con material de alto contraste.'},
+    ]
+  },
+  {
+    id:12, cat:'aeropuertos', catLabel:'Aeropuertos y Pistas',
+    name:'Señalización de Taxiway',
+    desc:'Marcas de calles de rodaje, umbrales y designaciones de pista conformes a ICAO Anexo 14 y reglamento de la AFAC.',
+    specs:[['Norma','ICAO Anexo 14 · AFAC'],['Colores','Amarillo · Blanco'],['Material','Preformado o termoplástico'],['Retroreflectividad','Clase I – II FAA'],['Resistencia','Tráfico aeronáutico'],['Durabilidad','3–5 años']],
+    images:[
+      {svg:S.airport(),label:'Calle de rodaje con designación',desc:'Marcas de taxiway con designación de pista y línea guía central — formato ICAO Anexo 14.'},
+      {svg:S.roadDashes(),label:'Línea central de rodaje',desc:'Línea de guía central continua en termoplástico preformado — resistente a jet blast.'},
+      {svg:S.night(),label:'Visibilidad nocturna en pista',desc:'Retroreflectividad de marcas de pista bajo iluminación de aeronave — verificación Class I FAA.'},
+    ]
+  },
+  {
+    id:13, cat:'estacionamientos', catLabel:'Estacionamientos',
+    name:'Delimitación de Cajones',
+    desc:'Señalización de cajones de estacionamiento, números, flechas de circulación, discapacitados y prohibiciones.',
+    specs:[['Material','Pintura acrílica o preformado'],['Ancho estándar','2.5m · 5m largo'],['Cajones especiales','3.8m discapacitados'],['Colores','Blanco · Azul · Amarillo'],['Durabilidad','1–3 años según tráfico'],['Extra','Numeración · Flechas · Signos']],
+    images:[
+      {svg:S.parking(),label:'Vista aérea de estacionamiento',desc:'Delimitación completa de estacionamiento corporativo — 450 cajones incluidos especiales.'},
+      {svg:S.crosswalk('#3D8EF0'),label:'Cajones de discapacidad',desc:'Zona de cajones para personas con discapacidad con símbolo internacional y franja de acceso.'},
+      {svg:S.texture('#3D8EF0'),label:'Numeración de cajones',desc:'Numeración en preformado blanco de alta durabilidad — resistente a luz UV y tráfico vehicular.'},
+    ]
+  },
+];
+
+/* ── APP STATE ────────────────────────────────────────────────────── */
+let activeFilter = 'all';
+let searchQuery = '';
+let lbProduct = null;
+let lbSlide = 0;
+
+/* ── RENDER FILTER BAR ────────────────────────────────────────────── */
+function renderFilters() {
+  const el = document.getElementById('filters');
+  el.innerHTML = CATS.map(c => `
+    <button class="filter-btn${c.id===activeFilter?' active':''}"
+      onclick="setFilter('${c.id}')" aria-pressed="${c.id===activeFilter}">
+      ${c.label}
+    </button>`).join('');
+}
+
+function setFilter(id) {
+  activeFilter = id;
+  renderFilters();
+  renderGrid();
+}
+
+/* ── RENDER GRID ──────────────────────────────────────────────────── */
+function getFiltered() {
+  return PRODUCTS.filter(p => {
+    const matchCat = activeFilter === 'all' || p.cat === activeFilter;
+    const q = searchQuery.toLowerCase();
+    const matchQ = !q || p.name.toLowerCase().includes(q) || p.desc.toLowerCase().includes(q) || p.catLabel.toLowerCase().includes(q);
+    return matchCat && matchQ;
+  });
+}
+
+function renderGrid() {
+  const grid = document.getElementById('grid');
+  const list = getFiltered();
+  if (!list.length) {
+    grid.innerHTML = `<div class="empty-state">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <p>Sin resultados para "<strong>${searchQuery}</strong>"</p>
+    </div>`;
+    return;
+  }
+  grid.innerHTML = list.map((p, i) => `
+    <article class="product-card" style="animation-delay:${i*0.04}s" aria-label="${p.name}">
+      <div class="card-visual" onclick="openLB(${p.id})" role="button" tabindex="0"
+        aria-label="Ver galería de ${p.name}"
+        onkeydown="if(event.key==='Enter')openLB(${p.id})">
+        ${p.images[0].svg}
+        ${p.badge ? `<span class="card-badge">${p.badge}</span>` : ''}
+        <div class="card-photo-count">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+            <rect x="2" y="4" width="12" height="9" rx="1.5"/>
+            <circle cx="8" cy="8" r="2"/>
+          </svg>
+          ${p.images.length} fotos
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-cat">${p.catLabel}</div>
+        <div class="card-name">${p.name}</div>
+        <div class="card-desc">${p.desc}</div>
+        <div class="card-actions">
+          <button class="btn-gallery" onclick="openLB(${p.id})">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="2" y="3" width="12" height="10" rx="1.5"/>
+              <circle cx="8" cy="8" r="2.5"/>
+            </svg>
+            Ver galería
+          </button>
+          <a class="btn-quote"
+            href="https://wa.me/524426417958?text=Hola+SIVSA%2C+me+interesa+cotizar%3A+${encodeURIComponent(p.name)}"
+            target="_blank" rel="noopener">
+            <svg viewBox="0 0 16 16" fill="none"><path d="M13.8 10.5c-.2-.1-1.2-.6-1.4-.7-.2-.1-.3-.1-.5.1-.1.2-.5.6-.6.8-.1.1-.2.15-.4.05-.2-.1-.85-.32-1.6-1-.6-.53-1-1.18-1.1-1.38-.1-.2 0-.31.09-.41.09-.1.2-.24.3-.36.1-.12.13-.2.2-.33.07-.13.03-.25-.02-.35-.05-.1-.45-1.08-.62-1.48-.16-.38-.33-.33-.45-.34-.12-.01-.25-.01-.38-.01-.13 0-.35.05-.53.25-.18.2-.7.68-.7 1.66s.72 1.93.82 2.06c.1.13 1.4 2.15 3.4 3.01.48.2.85.33 1.14.42.48.15.92.13 1.26.08.38-.06 1.18-.48 1.35-.95.16-.47.16-.87.11-.95-.05-.08-.18-.13-.38-.23z" fill="currentColor"/><path d="M7.98 1a7 7 0 100 14A7 7 0 007.98 1zm4.3 11.3A5.8 5.8 0 017.98 14a5.86 5.86 0 01-3.17-.93l-.23-.14L2.1 13.5l.6-2.2-.15-.24A5.86 5.86 0 012 7.98a5.98 5.98 0 0110.28-4.14A5.98 5.98 0 0113.96 8a5.86 5.86 0 01-1.68 4.3z" fill="currentColor"/></svg>
+            Cotizar
+          </a>
+        </div>
+      </div>
+    </article>`).join('');
+}
+
+/* ── LIGHTBOX ─────────────────────────────────────────────────────── */
+function openLB(id) {
+  lbProduct = PRODUCTS.find(p => p.id === id);
+  lbSlide = 0;
+  renderLB();
+  const lb = document.getElementById('lb');
+  lb.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  lb.querySelector('.lb-close').focus();
+}
+
+function closeLB() {
+  document.getElementById('lb').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function navLB(dir) {
+  const len = lbProduct.images.length;
+  lbSlide = (lbSlide + dir + len) % len;
+  renderLBSlide();
+}
+
+function goSlide(i) {
+  lbSlide = i;
+  renderLBSlide();
+}
+
+function renderLB() {
+  const p = lbProduct;
+  document.getElementById('lb-cat').textContent = p.catLabel;
+  document.getElementById('lb-name').textContent = p.name;
+
+  // Specs
+  document.getElementById('lb-specs').innerHTML =
+    p.specs.map(([k,v]) => `<div class="lb-spec"><span class="spec-k">${k}</span><span class="spec-v">${v}</span></div>`).join('');
+
+  // WhatsApp
+  document.getElementById('lb-wa').href =
+    `https://wa.me/524426417958?text=Hola+SIVSA%2C+me+interesa+cotizar%3A+${encodeURIComponent(p.name)}`;
+
+  // Thumbnails
+  document.getElementById('lb-thumbs').innerHTML =
+    p.images.map((img, i) =>
+      `<div class="lb-thumb${i===lbSlide?' active':''}" onclick="goSlide(${i})" role="button" tabindex="0" aria-label="Vista ${i+1}">${img.svg}</div>`
+    ).join('');
+
+  renderLBSlide();
+}
+
+function renderLBSlide() {
+  const img = lbProduct.images[lbSlide];
+  const frame = document.getElementById('lb-frame');
+  const thumbs = document.getElementById('lb-thumbs');
+
+  // Update frame
+  frame.innerHTML = `
+    <div class="lb-slide active">
+      ${img.svg}
+      <div class="lb-slide-label">${img.label}</div>
+    </div>`;
+
+  // Update description
+  document.getElementById('lb-img-desc').textContent = img.desc;
+
+  // Update thumbnail active
+  thumbs.querySelectorAll('.lb-thumb').forEach((t, i) =>
+    t.classList.toggle('active', i === lbSlide));
+}
+
+/* ── KEYBOARD EVENTS ──────────────────────────────────────────────── */
+document.addEventListener('keydown', e => {
+  const lb = document.getElementById('lb');
+  if (!lb.classList.contains('open')) return;
+  if (e.key === 'Escape') closeLB();
+  if (e.key === 'ArrowLeft')  navLB(-1);
+  if (e.key === 'ArrowRight') navLB(1);
+});
+
+/* ── TOUCH SWIPE ──────────────────────────────────────────────────── */
+let touchX = 0;
+document.getElementById('lb').addEventListener('touchstart', e => { touchX = e.touches[0].clientX; }, {passive:true});
+document.getElementById('lb').addEventListener('touchend', e => {
+  const dx = e.changedTouches[0].clientX - touchX;
+  if (Math.abs(dx) > 48) navLB(dx < 0 ? 1 : -1);
+}, {passive:true});
+
+/* ── SEARCH ───────────────────────────────────────────────────────── */
+document.getElementById('search').addEventListener('input', e => {
+  searchQuery = e.target.value;
+  renderGrid();
+});
+
+/* ── INIT ─────────────────────────────────────────────────────────── */
+renderFilters();
+renderGrid();
+</script>
+</body>
+</html>
