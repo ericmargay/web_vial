@@ -3,803 +3,1019 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="SIVSA — Catálogo de productos de señalización vial. Termoplásticos preformados, señalética vertical, ciclovías y más.">
-<title>Catálogo de Productos — SIVSA</title>
+<title>SIVSA — Presentación Comercial</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Space+Mono:wght@400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Space+Mono:wght@400&display=swap" rel="stylesheet">
 <style>
 :root{
   --bg:#070A0F;--bg2:#0C1018;--bgc:#0F1520;--bge:#18202C;
-  --a:#F5C518;--ad:rgba(245,197,24,.10);--ag:rgba(245,197,24,.22);--ab:rgba(245,197,24,.28);
+  --a:#F5C518;--ad:rgba(245,197,24,.1);--ag:rgba(245,197,24,.22);--ab:rgba(245,197,24,.28);
   --b:#3D8EF0;--bd:rgba(61,142,240,.07);--bb:rgba(61,142,240,.14);
-  --t1:#E8EDF5;--t2:#8A95A8;--t3:#4A5568;
-  --bc:rgba(255,255,255,.06);--gl:rgba(61,142,240,.038);
-  --fh:'Poppins',system-ui,sans-serif;
-  --fb:'Poppins',system-ui,sans-serif;
-  --fm:'Space Mono',monospace;
-  --ease:.22s ease;
+  --t1:#E8EDF5;--t2:#8A95A8;--t3:#4A5568;--bc:rgba(255,255,255,.06);--gl:rgba(61,142,240,.04);
+  --fh:'Poppins',system-ui,sans-serif;--fm:'Space Mono',monospace;
+  --ts:.52s cubic-bezier(.4,0,.2,1);
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--t1);font-family:var(--fb);font-size:16px;line-height:1.6;overflow-x:hidden;
+html,body{width:100%;height:100%;overflow:hidden;background:var(--bg);color:var(--t1);font-family:var(--fh)}
+#grid-cv{position:fixed;inset:0;pointer-events:none;z-index:0}
+.bg-grid{position:fixed;inset:0;pointer-events:none;z-index:0;
   background-image:linear-gradient(var(--gl) 1px,transparent 1px),linear-gradient(90deg,var(--gl) 1px,transparent 1px);
-  background-size:48px 48px;background-attachment:fixed}
-a{color:inherit;text-decoration:none}
-svg{display:block}
-button{cursor:pointer;font-family:inherit}
+  background-size:48px 48px}
 
-/* HEADER */
-.site-header{
-  position:sticky;top:0;z-index:50;
-  background:rgba(7,10,15,.94);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
-  border-bottom:1px solid var(--bc);padding:0 2rem;
-  display:flex;align-items:center;justify-content:space-between;height:64px}
-.header-logo{display:flex;align-items:center;gap:10px}
-.logo-word{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:3px;color:var(--t1)}
-.logo-dot{color:var(--a);font-size:9px}
-.logo-tag{font-size:11px;color:var(--t3);letter-spacing:.5px;border-left:1px solid var(--bb);padding-left:10px;margin-left:4px}
-.header-back{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--t2);
-  padding:.45rem .9rem;border:1px solid var(--bc);border-radius:4px;
-  transition:color var(--ease),border-color var(--ease)}
-.header-back:hover{color:var(--a);border-color:var(--ab)}
-.header-back svg{width:14px;height:14px}
+/* SLIDES */
+#deck{position:fixed;inset:0;z-index:1}
+.slide{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  padding:5vh 6vw;opacity:0;pointer-events:none;transform:translateX(6%);
+  transition:opacity var(--ts),transform var(--ts)}
+.slide.active{opacity:1;pointer-events:all;transform:translateX(0)}
+.slide.out-left{opacity:0;transform:translateX(-6%)}
+.slide.out-right{opacity:0;transform:translateX(6%)}
 
-/* PAGE TITLE */
-.cat-hero{padding:3.5rem 2rem 2rem;max-width:1240px;margin:0 auto}
-.cat-hero h1{font-family:var(--fh);font-size:clamp(1.8rem,4vw,3rem);font-weight:700;margin-bottom:.5rem}
-.cat-hero p{font-size:15px;color:var(--t2);max-width:560px}
+/* STAGGER */
+.rv{opacity:0;transform:translateY(12px);transition:opacity .5s ease,transform .5s ease}
+.slide.active .rv:nth-child(1){opacity:1;transform:none;transition-delay:.08s}
+.slide.active .rv:nth-child(2){opacity:1;transform:none;transition-delay:.18s}
+.slide.active .rv:nth-child(3){opacity:1;transform:none;transition-delay:.28s}
+.slide.active .rv:nth-child(4){opacity:1;transform:none;transition-delay:.38s}
+.slide.active .rv:nth-child(5){opacity:1;transform:none;transition-delay:.48s}
+.slide.active .rv:nth-child(6){opacity:1;transform:none;transition-delay:.58s}
+.slide.active .rv:nth-child(7){opacity:1;transform:none;transition-delay:.65s}
+.slide.active .rv.d0{opacity:1;transform:none;transition-delay:.1s}
+.slide.active .rv.d1{opacity:1;transform:none;transition-delay:.2s}
+.slide.active .rv.d2{opacity:1;transform:none;transition-delay:.3s}
+.slide.active .rv.d3{opacity:1;transform:none;transition-delay:.4s}
+.slide.active .rv.d4{opacity:1;transform:none;transition-delay:.5s}
+.slide.active .rv.d5{opacity:1;transform:none;transition-delay:.6s}
 
-/* CONTROLS: SEARCH + FILTER */
-.controls{max-width:1240px;margin:0 auto;padding:0 2rem 2rem;
-  display:flex;flex-direction:column;gap:1.25rem}
-.search-wrap{position:relative;max-width:380px}
-.search-wrap input{
-  width:100%;background:var(--bgc);border:1px solid var(--bc);border-radius:4px;
-  padding:.65rem 1rem .65rem 2.6rem;color:var(--t1);font-size:14px;outline:none;
-  transition:border-color var(--ease);font-family:var(--fb)}
-.search-wrap input::placeholder{color:var(--t3)}
-.search-wrap input:focus{border-color:var(--bb)}
-.search-wrap svg{position:absolute;left:.85rem;top:50%;transform:translateY(-50%);
-  width:14px;height:14px;color:var(--t3);pointer-events:none}
-.filters{display:flex;gap:.5rem;flex-wrap:wrap}
-.filter-btn{
-  background:none;border:1px solid var(--bc);border-radius:3px;
-  padding:.4rem 1rem;font-size:12.5px;font-weight:600;color:var(--t2);
-  letter-spacing:.4px;transition:all var(--ease)}
-.filter-btn:hover{border-color:var(--bb);color:var(--t1)}
-.filter-btn.active{background:var(--a);border-color:var(--a);color:var(--bg)}
+/* TYPE SCALE */
+.eyebrow{font-family:var(--fm);font-size:clamp(.6rem,1vw,.8rem);letter-spacing:3px;text-transform:uppercase;color:var(--a)}
+.h-mega{font-family:'Bebas Neue',sans-serif;font-size:clamp(5rem,13vw,14rem);line-height:.92;letter-spacing:2px}
+.h-big{font-family:var(--fh);font-size:clamp(2.2rem,4.5vw,5rem);font-weight:800;line-height:1.05;letter-spacing:-.5px}
+.h-med{font-family:var(--fh);font-size:clamp(1.5rem,2.8vw,2.8rem);font-weight:700;line-height:1.1}
+.body-l{font-size:clamp(.85rem,1.4vw,1.15rem);color:var(--t2);line-height:1.72}
+.body-m{font-size:clamp(.75rem,1.1vw,.95rem);color:var(--t2);line-height:1.65}
+.accent{color:var(--a)}
+.dim{color:var(--t3)}
 
-/* PRODUCT GRID */
-.cat-grid{
-  max-width:1240px;margin:0 auto;padding:0 2rem 4rem;
-  display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
-.product-card{
-  background:var(--bgc);border:1px solid var(--bc);border-radius:6px;
-  overflow:hidden;display:flex;flex-direction:column;
-  transition:border-color var(--ease),transform var(--ease),box-shadow var(--ease);
-  animation:cardIn .4s ease both}
-@keyframes cardIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
-.product-card:hover{border-color:var(--bb);transform:translateY(-3px);box-shadow:0 12px 32px rgba(0,0,0,.3)}
+/* LAYOUTS */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:4vw;width:100%;align-items:start}
+.col-left{display:flex;flex-direction:column;gap:2vh}
+.col-right{display:flex;flex-direction:column;gap:1.2vh}
 
-.card-visual{
-  position:relative;height:200px;overflow:hidden;
-  display:flex;align-items:center;justify-content:center;cursor:pointer}
-.card-visual svg{width:100%;height:100%;position:absolute;inset:0}
-.card-photo-count{
-  position:absolute;bottom:.6rem;right:.6rem;
-  background:rgba(7,10,15,.8);backdrop-filter:blur(6px);
-  border:1px solid var(--bc);border-radius:3px;
-  padding:.2rem .55rem;font-family:var(--fm);font-size:10px;color:var(--t2);
-  display:flex;align-items:center;gap:5px}
-.card-photo-count svg{width:11px;height:11px}
-.card-badge{
-  position:absolute;top:.6rem;left:.6rem;
-  background:var(--a);color:var(--bg);
-  font-family:var(--fm);font-size:9px;font-weight:700;letter-spacing:1px;
-  padding:.2rem .55rem;border-radius:2px}
+/* STATS */
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2vw;width:100%}
+.stat-block{background:var(--bgc);border:1px solid var(--bc);border-radius:6px;
+  padding:3vh 1.5vw;text-align:center;position:relative;overflow:hidden}
+.stat-block::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,var(--a),transparent);opacity:.7}
+.stat-block.hi{background:linear-gradient(135deg,rgba(245,197,24,.08),transparent)}
+.stat-num-big{font-family:'Bebas Neue',sans-serif;font-size:clamp(3.5rem,7vw,7rem);
+  color:var(--a);line-height:1;display:block}
+.stat-lbl{font-size:clamp(.65rem,1.1vw,.9rem);color:var(--t2);line-height:1.3;margin-top:.3rem}
 
-.card-body{padding:1.2rem;flex:1;display:flex;flex-direction:column;gap:.75rem}
-.card-cat{font-family:var(--fm);font-size:9.5px;letter-spacing:2px;text-transform:uppercase;color:var(--t3)}
-.card-name{font-size:1rem;font-weight:700;line-height:1.3}
-.card-desc{font-size:13px;color:var(--t2);line-height:1.6;flex:1}
-.card-actions{display:flex;gap:.6rem;margin-top:.25rem}
-.btn-gallery{
-  flex:1;background:none;border:1px solid var(--bm);border-radius:3px;
-  padding:.55rem;font-size:12.5px;font-weight:600;color:var(--b);
-  display:flex;align-items:center;justify-content:center;gap:6px;
-  transition:background var(--ease),border-color var(--ease),color var(--ease)}
-.btn-gallery:hover{background:var(--bd);border-color:var(--b);color:var(--t1)}
-.btn-gallery svg{width:14px;height:14px}
-.btn-quote{
-  flex:1;background:var(--a);border:none;border-radius:3px;
-  padding:.55rem;font-size:12.5px;font-weight:700;color:var(--bg);
-  display:flex;align-items:center;justify-content:center;gap:6px;
-  transition:background var(--ease),transform var(--ease)}
-.btn-quote:hover{background:#FFD43B;transform:translateY(-1px)}
-.btn-quote svg{width:14px;height:14px}
+/* CERT */
+.cert-center{display:flex;flex-direction:column;align-items:center;text-align:center;gap:2.5vh;width:100%}
+.cert-badge-big{width:min(17vw,172px);height:min(17vw,172px);border-radius:50%;
+  background:var(--ad);border:2px solid var(--ab);display:flex;align-items:center;justify-content:center;
+  animation:pulse 3s ease-in-out infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 var(--ag)}50%{box-shadow:0 0 0 22px transparent}}
+.cert-badge-big svg{width:70%;height:70%}
+.cert-kpis{display:flex;gap:2vw;flex-wrap:wrap;justify-content:center}
+.cert-kpi{background:var(--bgc);border-radius:4px;padding:1.2vh 2vw;text-align:center}
+.cert-kpi-lbl{font-family:var(--fm);font-size:.7rem;color:var(--t3);letter-spacing:2px;margin-bottom:.3rem}
+.cert-kpi-val{font-weight:700;font-size:.9rem}
 
-/* EMPTY STATE */
-.empty-state{
-  grid-column:1/-1;text-align:center;padding:4rem 2rem;
-  color:var(--t3);font-size:14px}
-.empty-state svg{width:40px;height:40px;margin:0 auto 1rem;opacity:.3}
+/* SOLUTIONS */
+.sol-grid-pres{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5vw;width:100%}
+.sol-tile{background:var(--bgc);border:1px solid var(--bc);border-radius:6px;
+  padding:2.5vh 1.5vw;display:flex;flex-direction:column;gap:.8vh;
+  transition:border-color .2s,transform .2s}
+.sol-tile:hover{border-color:var(--bb);transform:translateY(-3px)}
+.sol-img{height:clamp(60px,8vh,90px);border-radius:4px;overflow:hidden;margin-bottom:.5vh}
+.sol-img svg{width:100%;height:100%}
+.sol-cat-lbl{font-family:var(--fm);font-size:.65rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--t3)}
+.sol-tile h3{font-size:clamp(.8rem,1.3vw,1.05rem);font-weight:700;line-height:1.25}
+.sol-tile p{font-size:clamp(.68rem,.95vw,.82rem);color:var(--t2);line-height:1.5}
 
-/* LIGHTBOX */
-.lb{
-  position:fixed;inset:0;z-index:200;
-  display:flex;flex-direction:column;
-  background:rgba(4,6,10,.96);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
-  opacity:0;pointer-events:none;transition:opacity .28s ease}
-.lb.open{opacity:1;pointer-events:all}
+/* MATERIALS */
+.mat-list{display:flex;flex-direction:column;gap:1.5vh;width:100%}
+.mat-row{background:var(--bgc);border:1px solid var(--bc);border-radius:4px;
+  padding:1.8vh 1.5vw;display:grid;grid-template-columns:2fr .8fr 1.4fr;
+  align-items:center;gap:1.5vw;transition:border-color .2s}
+.mat-row:hover{border-color:var(--bb)}
+.mat-name{font-size:clamp(.8rem,1.3vw,1rem);font-weight:700}
+.mat-sub{font-size:clamp(.6rem,.9vw,.75rem);color:var(--t3);margin-top:.2rem}
+.mat-years{font-family:var(--fm);font-size:clamp(.65rem,1vw,.8rem);color:var(--a);text-align:center}
+.mat-bar-wrap{height:6px;background:rgba(255,255,255,.07);border-radius:3px;overflow:hidden}
+.mat-bar{height:100%;border-radius:3px;background:var(--a);width:0;transition:width 1.2s cubic-bezier(.4,0,.2,1)}
+.slide.active .mat-bar{width:var(--w)}
 
-.lb-top{
-  display:flex;align-items:center;justify-content:space-between;
-  padding:.9rem 1.5rem;border-bottom:1px solid var(--bc);flex-shrink:0}
-.lb-top-left{display:flex;align-items:center;gap:1rem}
-.lb-cat{font-family:var(--fm);font-size:9.5px;letter-spacing:2px;text-transform:uppercase;color:var(--a)}
-.lb-name{font-size:1.1rem;font-weight:700}
-.lb-close{
-  background:none;border:1px solid var(--bc);border-radius:3px;
-  width:36px;height:36px;display:flex;align-items:center;justify-content:center;
-  color:var(--t2);font-size:18px;transition:border-color var(--ease),color var(--ease)}
-.lb-close:hover{border-color:var(--t2);color:var(--t1)}
+/* PROJECTS */
+.proj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2vw;width:100%}
+.proj-card{background:var(--bgc);border:1px solid var(--bc);border-radius:6px;
+  overflow:hidden;transition:border-color .2s,transform .2s}
+.proj-card:hover{border-color:var(--bb);transform:translateY(-2px)}
+.proj-card.star{border-color:var(--ab)}
+.proj-img{height:clamp(70px,9vh,100px);overflow:hidden;position:relative}
+.proj-img svg{width:100%;height:100%}
+.proj-body{padding:1.5vh 1.2vw}
+.proj-year{font-family:var(--fm);font-size:clamp(.55rem,.85vw,.72rem);color:var(--a);margin-bottom:.3rem}
+.proj-name{font-size:clamp(.78rem,1.2vw,1rem);font-weight:700;margin-bottom:.2rem;line-height:1.3}
+.proj-loc{font-size:clamp(.62rem,.9vw,.78rem);color:var(--t3);margin-bottom:.5rem}
+.proj-metric{font-family:'Bebas Neue',sans-serif;font-size:clamp(1.1rem,2vw,1.7rem);color:var(--a)}
 
-.lb-body{flex:1;display:grid;grid-template-columns:1fr 340px;overflow:hidden;min-height:0}
+/* CASE STUDY */
+.case-layout{display:grid;grid-template-columns:1fr 1.2fr;gap:4vw;width:100%;align-items:center}
+.case-visual{border-radius:6px;overflow:hidden;aspect-ratio:16/9;background:var(--bgc);border:1px solid var(--bc)}
+.case-visual svg{width:100%;height:100%}
+.case-kpis{display:flex;flex-direction:column;gap:1.4vh}
+.kpi-row{display:flex;align-items:center;gap:1.2vw;padding:1.5vh 1.2vw;
+  background:var(--bgc);border:1px solid var(--bc);border-radius:4px}
+.kpi-val{font-family:'Bebas Neue',sans-serif;font-size:clamp(1.8rem,3.5vw,3.5rem);color:var(--a);flex-shrink:0;min-width:4rem}
+.kpi-lbl{font-size:clamp(.68rem,1vw,.88rem);color:var(--t2);line-height:1.4}
 
-/* Visual panel */
-.lb-visual-wrap{
-  position:relative;background:var(--bg2);display:flex;align-items:center;justify-content:center;overflow:hidden}
-.lb-visual-frame{width:100%;height:100%;position:relative;overflow:hidden}
-.lb-slide{
-  position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
-  transition:opacity .3s ease,transform .3s ease}
-.lb-slide.active{opacity:1;transform:translateX(0);z-index:1}
-.lb-slide.prev-exit{opacity:0;transform:translateX(-3%);z-index:0}
-.lb-slide.next-exit{opacity:0;transform:translateX(3%);z-index:0}
-.lb-slide svg{width:100%;height:100%;object-fit:cover}
-.lb-slide-label{
-  position:absolute;bottom:1.2rem;left:1.2rem;
-  background:rgba(7,10,15,.85);border:1px solid var(--bc);
-  border-radius:3px;padding:.35rem .7rem;
-  font-family:var(--fm);font-size:10px;color:var(--t2)}
+/* PILLARS */
+.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:2vw;width:100%}
+.pillar{background:var(--bgc);border:1px solid var(--bc);border-radius:6px;
+  padding:3.5vh 2vw;text-align:center;display:flex;flex-direction:column;align-items:center;gap:1.5vh;
+  transition:border-color .2s}
+.pillar:hover{border-color:var(--bb)}
+.pillar-icon{width:clamp(48px,6vw,70px);height:clamp(48px,6vw,70px);border-radius:50%;
+  border:1px solid var(--bb);background:var(--bge);display:flex;align-items:center;justify-content:center;color:var(--a)}
+.pillar-icon svg{width:50%;height:50%}
+.pillar h3{font-size:clamp(.85rem,1.5vw,1.2rem);font-weight:700}
+.pillar p{font-size:clamp(.68rem,1vw,.88rem);color:var(--t2);line-height:1.6}
 
-/* Nav arrows */
-.lb-arr{
-  position:absolute;top:50%;transform:translateY(-50%);
-  background:rgba(7,10,15,.8);border:1px solid var(--bc);border-radius:3px;
-  width:40px;height:40px;display:flex;align-items:center;justify-content:center;
-  color:var(--t1);font-size:18px;z-index:10;
-  transition:background var(--ease),border-color var(--ease)}
-.lb-arr:hover{background:rgba(245,197,24,.15);border-color:var(--ab)}
-.lb-arr.left{left:1rem}
-.lb-arr.right{right:1rem}
+/* PROCESS */
+.process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5vw;width:100%}
+.proc-step{background:var(--bgc);border:1px solid var(--bc);border-radius:6px;
+  padding:2.5vh 1.2vw;display:flex;flex-direction:column;gap:1.2vh;position:relative;overflow:hidden}
+.proc-step::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,var(--b),transparent);opacity:.5}
+.proc-num{font-family:'Bebas Neue',sans-serif;font-size:3rem;color:var(--b);opacity:.18;line-height:1}
+.proc-title{font-size:clamp(.82rem,1.3vw,1rem);font-weight:700}
+.proc-desc{font-size:clamp(.65rem,.95vw,.82rem);color:var(--t2);line-height:1.6}
+.norms-row{display:flex;gap:1vw;flex-wrap:wrap}
+.norm-tag{font-family:var(--fm);font-size:.7rem;color:var(--b);background:var(--bd);
+  border:1px solid var(--bb);border-radius:3px;padding:.25rem .6rem}
 
-/* Thumbnail strip */
-.lb-thumbs{
-  position:absolute;bottom:1rem;left:50%;transform:translateX(-50%);
-  display:flex;gap:.4rem;z-index:10}
-.lb-thumb{
-  width:52px;height:36px;border-radius:3px;overflow:hidden;
-  border:2px solid transparent;cursor:pointer;
-  transition:border-color var(--ease),opacity var(--ease);opacity:.5}
-.lb-thumb.active{border-color:var(--a);opacity:1}
-.lb-thumb svg{width:100%;height:100%}
+/* CTA */
+.cta-layout{display:flex;flex-direction:column;align-items:center;text-align:center;gap:2.5vh}
+.cta-wa{display:inline-flex;align-items:center;gap:.8rem;padding:1.2vh 3vw;
+  background:#25D366;border-radius:4px;font-size:clamp(.88rem,1.5vw,1.2rem);
+  font-weight:700;color:#fff;transition:background .2s,transform .2s;text-decoration:none}
+.cta-wa:hover{background:#1ebe5c;transform:translateY(-2px)}
+.cta-wa svg{width:clamp(18px,2.2vw,26px);height:clamp(18px,2.2vw,26px);flex-shrink:0}
+.cta-contacts{display:flex;gap:3vw;flex-wrap:wrap;justify-content:center}
+.cta-contact{font-size:clamp(.72rem,1.1vw,.92rem);color:var(--t2)}
+.cta-contact strong{color:var(--t1)}
 
-/* Info panel */
-.lb-info{
-  border-left:1px solid var(--bc);padding:1.5rem;
-  display:flex;flex-direction:column;gap:1.25rem;overflow-y:auto}
-.lb-img-desc{font-size:13px;color:var(--t2);line-height:1.65;
-  padding:.75rem;background:var(--bge);border-radius:3px}
-.lb-specs-title{font-family:var(--fm);font-size:9.5px;letter-spacing:2px;text-transform:uppercase;color:var(--t3)}
-.lb-specs{display:flex;flex-direction:column;gap:.5rem}
-.lb-spec{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;
-  padding:.5rem 0;border-bottom:1px solid var(--bc);font-size:13px}
-.lb-spec:last-child{border:none}
-.spec-k{color:var(--t3);flex-shrink:0}
-.spec-v{color:var(--t1);font-weight:600;text-align:right}
-.lb-cta{
-  margin-top:auto;display:flex;flex-direction:column;gap:.6rem}
-.lb-cta p{font-size:12px;color:var(--t3)}
-.btn-wa-full{
-  display:flex;align-items:center;justify-content:center;gap:8px;
-  padding:.75rem 1rem;background:#25D366;border:none;border-radius:4px;
-  color:#fff;font-weight:700;font-size:14px;
-  transition:background var(--ease),transform var(--ease)}
-.btn-wa-full:hover{background:#1ebe5c;transform:translateY(-1px)}
-.btn-wa-full svg{width:18px;height:18px}
+/* COVER */
+.s-cover{flex-direction:column;text-align:center;gap:1.5rem;position:relative}
+.cover-road{position:absolute;inset:0;z-index:0;opacity:.38}
+.cover-road svg{width:100%;height:100%;object-fit:cover}
+.cover-content{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:1.2rem}
+.cover-hint{font-family:var(--fm);font-size:clamp(.58rem,.9vw,.75rem);letter-spacing:3px;
+  text-transform:uppercase;color:var(--t3);animation:blink 2s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:.3}50%{opacity:.9}}
 
-/* FOOTER */
-.cat-footer{
-  border-top:1px solid var(--bc);padding:1.5rem 2rem;
-  display:flex;align-items:center;justify-content:space-between;
-  font-family:var(--fm);font-size:11px;color:var(--t3)}
-.cat-footer a{color:var(--t2);transition:color var(--ease)}
-.cat-footer a:hover{color:var(--a)}
+/* UI CHROME */
+.slide-logo{position:fixed;top:1.2rem;left:1.8rem;z-index:50;display:flex;align-items:center;gap:7px;opacity:.45}
+.slide-logo-dot{color:var(--a);font-size:8px}
+.slide-logo-word{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:2px}
+.slide-num{position:fixed;top:1.2rem;right:1.8rem;z-index:50;font-family:var(--fm);font-size:11px;color:var(--t3);letter-spacing:1px}
+#controls{position:fixed;bottom:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;padding:.7rem 1.8rem;
+  background:linear-gradient(to top,rgba(7,10,15,.95),transparent);
+  opacity:0;transition:opacity .3s}
+#controls.vis{opacity:1}
+.ctrl-nav{display:flex;align-items:center;gap:.75rem}
+.ctrl-btn{background:none;border:1px solid var(--bc);border-radius:3px;width:36px;height:36px;
+  display:flex;align-items:center;justify-content:center;color:var(--t2);font-size:16px;cursor:pointer;transition:all .2s}
+.ctrl-btn:hover{border-color:var(--bb);color:var(--t1)}
+.ctrl-btn:disabled{opacity:.2;cursor:default}
+.slide-ctr{font-family:var(--fm);font-size:11px;color:var(--t3);min-width:52px;text-align:center}
+.ctrl-right{display:flex;align-items:center;gap:.75rem}
+.auto-btn{font-size:11px;font-family:var(--fm);letter-spacing:1px;color:var(--t3);
+  padding:.28rem .65rem;border:1px solid var(--bc);border-radius:3px;cursor:pointer;background:none;transition:all .2s}
+.auto-btn.on{color:var(--a);border-color:var(--ab)}
+#progress{position:fixed;bottom:0;left:0;right:0;z-index:101;height:2px;background:rgba(255,255,255,.05)}
+#pfill{height:100%;background:var(--a);transition:width var(--ts)}
+.auto-ring{position:fixed;bottom:2.2rem;left:50%;transform:translateX(-50%);z-index:102;display:none}
+.auto-ring.show{display:block}
+.toast{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:200;
+  background:rgba(15,21,32,.96);border:1px solid var(--bc);border-radius:6px;padding:1.8rem 2.2rem;
+  text-align:center;opacity:0;pointer-events:none;transition:opacity .3s}
+.toast.show{opacity:1}
+.toast h3{font-size:.95rem;font-weight:700;margin-bottom:.9rem;color:var(--a)}
+.toast-keys{display:flex;flex-direction:column;gap:.45rem;font-size:.82rem;color:var(--t2)}
+.toast-key{display:flex;gap:1rem;align-items:center}
+.toast-key kbd{background:var(--bge);border:1px solid var(--bb);border-radius:3px;
+  padding:.12rem .4rem;font-family:var(--fm);font-size:.72rem;color:var(--t1)}
 
-/* RESPONSIVE */
-@media(max-width:900px){
-  .cat-grid{grid-template-columns:repeat(2,1fr)}
-  .lb-body{grid-template-columns:1fr}
-  .lb-info{max-height:240px;border-left:none;border-top:1px solid var(--bc)}
-}
-@media(max-width:600px){
-  .cat-grid{grid-template-columns:1fr;padding:0 1.25rem 3rem}
-  .controls,.cat-hero{padding-left:1.25rem;padding-right:1.25rem}
-  .site-header{padding:0 1.25rem}
-  .logo-tag{display:none}
-  .lb-body{grid-template-columns:1fr}
-}
+/* PHOTO PLACEHOLDER */
+.photo-ph{background:var(--bge);border:1px dashed var(--bc);border-radius:4px;
+  display:flex;align-items:center;justify-content:center;flex-direction:column;gap:.4rem;
+  font-family:var(--fm);font-size:.62rem;color:var(--t3);letter-spacing:1px;text-align:center;padding:.5rem}
+.photo-ph svg{opacity:.3}
 </style>
 </head>
 <body>
 
-<!-- HEADER -->
-<header class="site-header">
-  <div class="header-logo">
-    <span class="logo-dot">●</span>
-    <span class="logo-word">SIVSA</span>
-    <span class="logo-tag">Catálogo de Productos</span>
-  </div>
-  <a href="../index.html" class="header-back">
-    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
-      <path d="M10 4L6 8l4 4"/>
-    </svg>
-    Volver al sitio
-  </a>
-</header>
+<canvas id="grid-cv"></canvas>
+<div class="bg-grid"></div>
 
-<!-- PAGE TITLE -->
-<div class="cat-hero">
-  <h1>Catálogo de <em style="color:var(--a);font-style:italic">Productos</em></h1>
-  <p>Materiales y sistemas de señalización certificados. Selecciona un producto para ver galería de imágenes, especificaciones técnicas y cotizar directamente.</p>
+<div class="slide-logo" aria-hidden="true">
+  <span class="slide-logo-dot">●</span>
+  <span class="slide-logo-word">SIVSA</span>
+</div>
+<div class="slide-num" id="snum">1 / 11</div>
+
+<div id="deck">
+
+<!-- ══ 0 · PORTADA ══════════════════════════════════════════════════ -->
+<div class="slide s-cover" id="s0">
+  <div class="cover-road">
+    <svg viewBox="0 0 1200 675" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+      <rect width="1200" height="675" fill="#070a0f"/>
+      <rect x="0" y="260" width="1200" height="155" fill="#0e1420"/>
+      <line x1="0" y1="258" x2="1200" y2="258" stroke="#F5C518" stroke-width="2" opacity=".55"/>
+      <line x1="0" y1="415" x2="1200" y2="415" stroke="#F5C518" stroke-width="2" opacity=".55"/>
+      <rect x="0"   y="328" width="190" height="10" rx="5" fill="#F5C518" opacity=".9"/>
+      <rect x="260" y="328" width="190" height="10" rx="5" fill="#F5C518" opacity=".9"/>
+      <rect x="520" y="328" width="190" height="10" rx="5" fill="#F5C518" opacity=".9"/>
+      <rect x="780" y="328" width="190" height="10" rx="5" fill="#F5C518" opacity=".9"/>
+      <rect x="1040" y="328" width="160" height="10" rx="5" fill="#F5C518" opacity=".9"/>
+      <line x1="0" y1="258" x2="1200" y2="258" stroke="#E8EDF5" stroke-width="1" opacity=".2"/>
+      <line x1="0" y1="415" x2="1200" y2="415" stroke="#E8EDF5" stroke-width="1" opacity=".2"/>
+      <line x1="200"  y1="0" x2="200"  y2="675" stroke="#3D8EF0" stroke-width="1" opacity=".04"/>
+      <line x1="400"  y1="0" x2="400"  y2="675" stroke="#3D8EF0" stroke-width="1" opacity=".04"/>
+      <line x1="600"  y1="0" x2="600"  y2="675" stroke="#3D8EF0" stroke-width="1" opacity=".04"/>
+      <line x1="800"  y1="0" x2="800"  y2="675" stroke="#3D8EF0" stroke-width="1" opacity=".04"/>
+      <line x1="1000" y1="0" x2="1000" y2="675" stroke="#3D8EF0" stroke-width="1" opacity=".04"/>
+    </svg>
+  </div>
+  <div class="cover-content">
+    <p class="eyebrow rv">Querétaro, México · Fundada 2008</p>
+    <div class="h-mega rv">SIVSA</div>
+    <p class="rv" style="font-size:clamp(.85rem,1.6vw,1.2rem);color:var(--t2);letter-spacing:4px;font-weight:500">SERVICIOS DE INGENIERÍA VIAL</p>
+    <p class="rv" style="font-family:var(--fh);font-size:clamp(1.4rem,3vw,2.6rem);font-weight:600;font-style:italic;color:var(--a)">La Vía Correcta. Cada Día.</p>
+    <p class="body-m rv" style="max-width:40vw">18+ años de experiencia · Certificación Triple-A PPG USA · Materiales Ennis Flint</p>
+    <p class="cover-hint rv">— ESPACIO PARA AVANZAR —</p>
+  </div>
 </div>
 
-<!-- CONTROLS -->
-<div class="controls">
-  <div class="search-wrap">
-    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
-      <circle cx="6.5" cy="6.5" r="4"/><line x1="10" y1="10" x2="14" y2="14"/>
-    </svg>
-    <input type="text" id="search" placeholder="Buscar producto..." autocomplete="off" aria-label="Buscar producto">
-  </div>
-  <div class="filters" id="filters" role="group" aria-label="Filtrar por categoría"></div>
-</div>
-
-<!-- PRODUCT GRID -->
-<div class="cat-grid" id="grid" aria-live="polite"></div>
-
-<!-- LIGHTBOX -->
-<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Galería de producto">
-  <div class="lb-top">
-    <div class="lb-top-left">
-      <span class="lb-cat" id="lb-cat"></span>
-      <span class="lb-name" id="lb-name"></span>
+<!-- ══ 1 · QUIÉNES SOMOS ════════════════════════════════════════════ -->
+<div class="slide" id="s1">
+  <div class="two-col">
+    <div class="col-left">
+      <p class="eyebrow rv">Nosotros</p>
+      <h2 class="h-big rv">Quiénes<br><em class="accent">somos</em></h2>
+      <p class="body-l rv">Empresa especializada en señalización horizontal y vertical con presencia en toda la República Mexicana. Fundada en Querétaro con la misión de ofrecer los materiales más duraderos del mercado, instalados con los más altos estándares de la industria.</p>
+      <p class="body-l rv">Fundadores de la filial <strong style="color:var(--t1)">TECSA</strong>, soporte técnico nacional para la marca <strong style="color:var(--t1)">Ennis Flint</strong> en México — el mayor fabricante de materiales de señalización vial del mundo.</p>
+      <!-- Foto de equipo / instalación — reemplazar con imagen real -->
+      <div class="rv photo-ph" style="height:clamp(80px,11vh,120px)">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="14" rx="2"/><circle cx="12" cy="10" r="3"/><path d="M3 21h18"/></svg>
+        FOTO: EQUIPO EN OBRA / PROYECTO
+      </div>
     </div>
-    <button class="lb-close" onclick="closeLB()" aria-label="Cerrar galería">✕</button>
-  </div>
-  <div class="lb-body">
-    <div class="lb-visual-wrap">
-      <div class="lb-visual-frame" id="lb-frame"></div>
-      <button class="lb-arr left" onclick="navLB(-1)" aria-label="Imagen anterior">←</button>
-      <button class="lb-arr right" onclick="navLB(1)" aria-label="Imagen siguiente">→</button>
-      <div class="lb-thumbs" id="lb-thumbs"></div>
-    </div>
-    <div class="lb-info">
-      <div class="lb-img-desc" id="lb-img-desc"></div>
-      <div class="lb-specs-title">Especificaciones técnicas</div>
-      <div class="lb-specs" id="lb-specs"></div>
-      <div class="lb-cta">
-        <p>¿Te interesa este producto? Cotiza sin costo.</p>
-        <a class="btn-wa-full" id="lb-wa" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          Cotizar por WhatsApp
-        </a>
+    <div class="col-right">
+      <p class="eyebrow rv" style="margin-bottom:.4rem">Línea de tiempo</p>
+      <div class="rv d0" style="display:flex;flex-direction:column;gap:.7vh">
+        <div style="display:flex;gap:1vw;align-items:flex-start;padding:.8vh 1vw;background:var(--bgc);border:1px solid var(--bc);border-radius:4px">
+          <span style="font-family:var(--fm);font-size:.68rem;color:var(--a);flex-shrink:0;margin-top:.12rem;min-width:2.6rem">2008</span>
+          <span style="font-size:.8rem;color:var(--t2);line-height:1.4">Fundación de SIVSA en Querétaro</span>
+        </div>
+        <div style="display:flex;gap:1vw;align-items:flex-start;padding:.8vh 1vw;background:var(--bgc);border:1px solid var(--bc);border-radius:4px">
+          <span style="font-family:var(--fm);font-size:.68rem;color:var(--a);flex-shrink:0;margin-top:.12rem;min-width:2.6rem">2012</span>
+          <span style="font-size:.8rem;color:var(--t2);line-height:1.4">Creación de filial TECSA · Ennis Flint México</span>
+        </div>
+        <div style="display:flex;gap:1vw;align-items:flex-start;padding:.8vh 1vw;background:var(--bgc);border:1px solid var(--bc);border-radius:4px">
+          <span style="font-family:var(--fm);font-size:.68rem;color:var(--a);flex-shrink:0;margin-top:.12rem;min-width:2.6rem">2017</span>
+          <span style="font-size:.8rem;color:var(--t2);line-height:1.4">Autopista Durango–Mazatlán · CAPUFE</span>
+        </div>
+        <div style="display:flex;gap:1vw;align-items:flex-start;padding:.8vh 1vw;background:var(--bgc);border:1px solid var(--bc);border-radius:4px">
+          <span style="font-family:var(--fm);font-size:.68rem;color:var(--a);flex-shrink:0;margin-top:.12rem;min-width:2.6rem">2019</span>
+          <span style="font-size:.8rem;color:var(--t2);line-height:1.4">Ciclovías CDMX &amp; Querétaro · Secretaría de Movilidad</span>
+        </div>
+        <div style="display:flex;gap:1vw;align-items:flex-start;padding:.8vh 1vw;background:var(--bgc);border:1px solid var(--bc);border-radius:4px">
+          <span style="font-family:var(--fm);font-size:.68rem;color:var(--a);flex-shrink:0;margin-top:.12rem;min-width:2.6rem">2022</span>
+          <span style="font-size:.8rem;color:var(--t2);line-height:1.4">Amazon Tlajomulco — 38,000 m² señalización integral</span>
+        </div>
+        <div style="display:flex;gap:1vw;align-items:flex-start;padding:.8vh 1vw;background:var(--bgc);border:1px solid var(--bc);border-radius:4px">
+          <span style="font-family:var(--fm);font-size:.68rem;color:var(--a);flex-shrink:0;margin-top:.12rem;min-width:2.6rem">2023</span>
+          <span style="font-size:.8rem;color:var(--t2);line-height:1.4">Ciclovía Puente Santa Bárbara, Querétaro — 1,200 ml</span>
+        </div>
+        <div style="display:flex;gap:1vw;align-items:flex-start;padding:.8vh 1vw;background:var(--bgc);border:1px solid var(--ab);border-radius:4px">
+          <span style="font-family:var(--fm);font-size:.68rem;color:var(--a);flex-shrink:0;margin-top:.12rem;min-width:2.6rem">2024</span>
+          <span style="font-size:.8rem;line-height:1.4">Certificación <strong style="color:var(--a)">Triple-A PPG USA</strong> · Primera empresa en México</span>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- FOOTER -->
-<footer class="cat-footer">
-  <span>© 2025 SIVSA — Servicios de Ingeniería Vial S.A. de C.V. · Diseño por <span style="color:var(--a)">Aminoacid</span></span>
-  <a href="tel:+524426417958">(442) 641 7958</a>
-</footer>
+<!-- ══ 2 · NÚMEROS ══════════════════════════════════════════════════ -->
+<div class="slide" id="s2">
+  <div style="display:flex;flex-direction:column;gap:4vh;width:100%;align-items:center">
+    <div style="text-align:center">
+      <p class="eyebrow rv">Trayectoria comprobada</p>
+      <h2 class="h-big rv">Números que <em class="accent">hablan</em></h2>
+    </div>
+    <div class="stats-grid rv">
+      <div class="stat-block">
+        <span class="stat-num-big" data-target="18" data-suffix="+">0+</span>
+        <span class="stat-lbl">Años de experiencia continua en señalización vial</span>
+      </div>
+      <div class="stat-block hi">
+        <span class="stat-num-big" data-target="30" data-suffix="+">0+</span>
+        <span class="stat-lbl">Proyectos documentados en toda la República</span>
+      </div>
+      <div class="stat-block">
+        <span class="stat-num-big" data-target="15" data-suffix="+">0+</span>
+        <span class="stat-lbl">Estados de la República Mexicana atendidos</span>
+      </div>
+      <div class="stat-block hi">
+        <span class="stat-num-big" data-target="1" data-suffix="ª">—</span>
+        <span class="stat-lbl">Única certificación Triple-A PPG USA en México</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ 3 · CERTIFICACIÓN ════════════════════════════════════════════ -->
+<div class="slide" id="s3">
+  <div class="cert-center">
+    <p class="eyebrow rv">PPG Industries USA · 2024</p>
+    <div class="cert-badge-big rv">
+      <svg viewBox="0 0 100 100" fill="none">
+        <polygon points="50,6 62,34 92,34 69,52 78,80 50,63 22,80 31,52 8,34 38,34" stroke="#F5C518" stroke-width="2" fill="rgba(245,197,24,.06)"/>
+        <text x="50" y="44" text-anchor="middle" font-size="11" fill="#F5C518" font-family="Poppins,sans-serif" font-weight="700" letter-spacing="1">TRIPLE</text>
+        <text x="50" y="63" text-anchor="middle" font-size="23" fill="#F5C518" font-family="Poppins,sans-serif" font-weight="800">A</text>
+      </svg>
+    </div>
+    <h2 class="h-big rv accent">Primera y única empresa<br>certificada en México</h2>
+    <p class="body-l rv" style="max-width:48vw">PPG Industries USA nos otorgó en 2024 la Certificación Triple-A para la instalación de termoplásticos preformados — el estándar más exigente de la industria. <strong style="color:var(--t1)">Ninguna otra empresa en México posee esta certificación.</strong></p>
+    <div class="cert-kpis rv">
+      <div class="cert-kpi" style="border:1px solid var(--ab)">
+        <div class="cert-kpi-lbl">OTORGADO POR</div>
+        <div class="cert-kpi-val">PPG Industries USA</div>
+      </div>
+      <div class="cert-kpi" style="border:1px solid var(--bc)">
+        <div class="cert-kpi-lbl">ESPECIALIDAD</div>
+        <div class="cert-kpi-val">Termoplásticos Preformados</div>
+      </div>
+      <div class="cert-kpi" style="border:1px solid var(--bc)">
+        <div class="cert-kpi-lbl">ESTATUS</div>
+        <div class="cert-kpi-val" style="color:var(--a)">● Vigente 2024</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ 4 · SOLUCIONES ═══════════════════════════════════════════════ -->
+<div class="slide" id="s4">
+  <div style="display:flex;flex-direction:column;gap:2.5vh;width:100%">
+    <div>
+      <p class="eyebrow rv">Aplicaciones</p>
+      <h2 class="h-big rv">Nuestras <em class="accent">soluciones</em></h2>
+    </div>
+    <div class="sol-grid-pres">
+
+      <div class="sol-tile rv d0">
+        <div class="sol-img">
+          <svg viewBox="0 0 320 80" xmlns="http://www.w3.org/2000/svg">
+            <rect width="320" height="80" fill="#0a0d14"/>
+            <rect x="0" y="28" width="320" height="24" fill="#111620"/>
+            <rect x="0" y="27" width="320" height="2" fill="#F5C518" opacity=".6"/>
+            <rect x="0" y="51" width="320" height="2" fill="#F5C518" opacity=".6"/>
+            <rect x="4"   y="38" width="55" height="4" rx="2" fill="#F5C518" opacity=".9"/>
+            <rect x="72"  y="38" width="55" height="4" rx="2" fill="#F5C518" opacity=".9"/>
+            <rect x="140" y="38" width="55" height="4" rx="2" fill="#F5C518" opacity=".9"/>
+            <rect x="208" y="38" width="55" height="4" rx="2" fill="#F5C518" opacity=".9"/>
+            <rect x="276" y="38" width="40" height="4" rx="2" fill="#F5C518" opacity=".9"/>
+          </svg>
+        </div>
+        <div class="sol-cat-lbl">Señalización Horizontal</div>
+        <h3>Vialidades y Autopistas</h3>
+        <p>Carreteras federales, estatales y urbanas. Guiones, líneas de orilla y marcas de intersección.</p>
+      </div>
+
+      <div class="sol-tile rv d1">
+        <div class="sol-img">
+          <svg viewBox="0 0 320 80" xmlns="http://www.w3.org/2000/svg">
+            <rect width="320" height="80" fill="#0a0d14"/>
+            <rect x="40" y="0" width="60" height="80" fill="rgba(37,211,102,.07)"/>
+            <rect x="40" y="0" width="2" height="80" fill="#25D366" opacity=".5"/>
+            <rect x="98" y="0" width="2" height="80" fill="#25D366" opacity=".5"/>
+            <circle cx="69" cy="22" r="8" fill="none" stroke="#25D366" stroke-width="2" opacity=".8"/>
+            <line x1="69" y1="30" x2="69" y2="46" stroke="#25D366" stroke-width="2.5" stroke-linecap="round" opacity=".8"/>
+            <line x1="57" y1="40" x2="81" y2="36" stroke="#25D366" stroke-width="2" stroke-linecap="round" opacity=".8"/>
+            <line x1="63" y1="46" x2="58" y2="60" stroke="#25D366" stroke-width="2" stroke-linecap="round" opacity=".8"/>
+            <line x1="75" y1="46" x2="80" y2="60" stroke="#25D366" stroke-width="2" stroke-linecap="round" opacity=".8"/>
+            <rect x="160" y="37" width="40" height="4" rx="2" fill="#F5C518" opacity=".7"/>
+            <rect x="214" y="37" width="40" height="4" rx="2" fill="#F5C518" opacity=".7"/>
+            <rect x="268" y="37" width="40" height="4" rx="2" fill="#F5C518" opacity=".7"/>
+          </svg>
+        </div>
+        <div class="sol-cat-lbl">Movilidad activa</div>
+        <h3>Ciclovías y Peatonal</h3>
+        <p>Carriles bici, paso seguro escolar y demarcaciones de movilidad activa con materiales preformados.</p>
+      </div>
+
+      <div class="sol-tile rv d2">
+        <div class="sol-img">
+          <svg viewBox="0 0 320 80" xmlns="http://www.w3.org/2000/svg">
+            <rect width="320" height="80" fill="#0a0d14"/>
+            <rect x="0" y="30" width="320" height="20" fill="#111620"/>
+            <rect x="4"   y="38" width="60" height="4" rx="2" fill="#F5C518" opacity=".9"/>
+            <rect x="76"  y="38" width="60" height="4" rx="2" fill="#F5C518" opacity=".9"/>
+            <rect x="148" y="38" width="60" height="4" rx="2" fill="#F5C518" opacity=".9"/>
+            <rect x="220" y="38" width="60" height="4" rx="2" fill="#F5C518" opacity=".9"/>
+            <rect x="290" y="38" width="28" height="4" rx="2" fill="#F5C518" opacity=".9"/>
+            <rect x="100" y="12" width="50" height="18" rx="2" fill="rgba(245,197,24,.12)" stroke="#F5C518" stroke-width="1" opacity=".7"/>
+            <text x="125" y="24" text-anchor="middle" font-size="8" fill="#F5C518" opacity=".9" font-family="Poppins,sans-serif" font-weight="700">A4</text>
+          </svg>
+        </div>
+        <div class="sol-cat-lbl">Infraestructura aeroportuaria</div>
+        <h3>Aeropuertos y Pistas</h3>
+        <p>Señalización ICAO para calles de rodaje, pistas y plataformas conforme AFAC.</p>
+      </div>
+
+      <div class="sol-tile rv d3">
+        <div class="sol-img">
+          <svg viewBox="0 0 320 80" xmlns="http://www.w3.org/2000/svg">
+            <rect width="320" height="80" fill="#0a0d14"/>
+            <rect x="0" y="0" width="60" height="80" fill="rgba(245,197,24,.05)"/>
+            <rect x="0" y="0" width="3" height="80" fill="#F5C518" opacity=".65"/>
+            <rect x="57" y="0" width="3" height="80" fill="#F5C518" opacity=".65"/>
+            <rect x="3"  y="4"  width="54" height="20" fill="#F5C518" opacity=".5"/>
+            <rect x="3"  y="44" width="54" height="20" fill="#F5C518" opacity=".5"/>
+            <rect x="90" y="0"  width="60" height="80" fill="rgba(37,211,102,.05)" stroke="#25D366" stroke-width="1" stroke-opacity=".3"/>
+            <rect x="170" y="0" width="60" height="80" fill="rgba(37,211,102,.05)" stroke="#25D366" stroke-width="1" stroke-opacity=".3"/>
+            <rect x="250" y="0" width="60" height="80" fill="rgba(37,211,102,.05)" stroke="#25D366" stroke-width="1" stroke-opacity=".3"/>
+          </svg>
+        </div>
+        <div class="sol-cat-lbl">Planta e industria</div>
+        <h3>Señalización Industrial</h3>
+        <p>Plantas, almacenes y complejos mineros. Bajo NOM-003-SEGOB con diagnóstico de riesgo incluido.</p>
+      </div>
+
+      <div class="sol-tile rv d4">
+        <div class="sol-img">
+          <svg viewBox="0 0 320 80" xmlns="http://www.w3.org/2000/svg">
+            <rect width="320" height="80" fill="#0a0d14"/>
+            <rect x="0" y="26" width="320" height="30" fill="#111620"/>
+            <rect x="2"  y="30" width="40" height="22" rx="1" fill="#F5C518" opacity=".85"/>
+            <rect x="54" y="30" width="40" height="22" rx="1" fill="#F5C518" opacity=".85"/>
+            <rect x="106" y="30" width="40" height="22" rx="1" fill="#F5C518" opacity=".85"/>
+            <rect x="158" y="30" width="40" height="22" rx="1" fill="#F5C518" opacity=".85"/>
+            <rect x="210" y="30" width="40" height="22" rx="1" fill="#F5C518" opacity=".85"/>
+            <rect x="262" y="30" width="40" height="22" rx="1" fill="#F5C518" opacity=".85"/>
+            <rect x="0"  y="24" width="320" height="3" fill="#F5C518" opacity=".6"/>
+            <rect x="0"  y="53" width="320" height="3" fill="#F5C518" opacity=".6"/>
+            <text x="240" y="18" font-size="9" fill="#F5C518" opacity=".5" font-family="Poppins,sans-serif" font-weight="700" letter-spacing="1">ZONA ESCOLAR</text>
+          </svg>
+        </div>
+        <div class="sol-cat-lbl">Seguridad escolar</div>
+        <h3>Zonas Escolares</h3>
+        <p>Paso seguro, reductores pintados y señalamiento de advertencia en entornos de alto valor peatonal.</p>
+      </div>
+
+      <div class="sol-tile rv d5">
+        <div class="sol-img">
+          <svg viewBox="0 0 320 80" xmlns="http://www.w3.org/2000/svg">
+            <rect width="320" height="80" fill="#0a0d14"/>
+            <rect x="2"  y="4"  width="1.5" height="72" fill="#E8EDF5" opacity=".45"/>
+            <rect x="55" y="4"  width="1.5" height="72" fill="#E8EDF5" opacity=".45"/>
+            <rect x="108" y="4" width="1.5" height="72" fill="#E8EDF5" opacity=".45"/>
+            <rect x="161" y="4" width="1.5" height="72" fill="#E8EDF5" opacity=".45"/>
+            <rect x="214" y="4" width="1.5" height="72" fill="#E8EDF5" opacity=".45"/>
+            <rect x="267" y="4" width="1.5" height="72" fill="#E8EDF5" opacity=".45"/>
+            <rect x="318" y="4" width="1.5" height="72" fill="#E8EDF5" opacity=".45"/>
+            <rect x="2" y="4"  width="316" height="1.5" fill="#E8EDF5" opacity=".45"/>
+            <rect x="2" y="76" width="316" height="1.5" fill="#E8EDF5" opacity=".45"/>
+            <text x="28" y="46" text-anchor="middle" font-size="20" fill="#3D8EF0" opacity=".18" font-family="Poppins,sans-serif" font-weight="700">P</text>
+            <text x="81" y="46" text-anchor="middle" font-size="20" fill="#3D8EF0" opacity=".18" font-family="Poppins,sans-serif" font-weight="700">P</text>
+            <text x="134" y="46" text-anchor="middle" font-size="20" fill="#3D8EF0" opacity=".18" font-family="Poppins,sans-serif" font-weight="700">P</text>
+          </svg>
+        </div>
+        <div class="sol-cat-lbl">Corporativos y comerciales</div>
+        <h3>Estacionamientos</h3>
+        <p>Cajones, discapacidad, flechas y numeración en complejos corporativos y centros comerciales.</p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ══ 5 · MATERIALES ════════════════════════════════════════════════ -->
+<div class="slide" id="s5">
+  <div class="two-col" style="gap:5vw">
+    <div class="col-left">
+      <p class="eyebrow rv">Tecnología</p>
+      <h2 class="h-big rv">Materiales de<br><em class="accent">alta durabilidad</em></h2>
+      <p class="body-l rv">Cada material se selecciona según el tipo de vía, tráfico y condiciones climáticas — garantizando el mayor retorno de inversión para su proyecto.</p>
+      <div class="rv" style="background:var(--bgc);border:1px solid var(--ab);border-radius:4px;padding:1.5vh 1.2vw">
+        <p style="font-size:clamp(.72rem,1.1vw,.88rem);color:var(--t2);line-height:1.6">
+          <strong style="color:var(--a)">Triple-A PPG USA:</strong> Somos la única empresa en México certificada para instalación de preformados — su señalización dura <strong style="color:var(--t1)">hasta 3.5× más</strong> que con pintura convencional.
+        </p>
+      </div>
+      <!-- Foto de material close-up / instalación — reemplazar -->
+      <div class="rv photo-ph" style="height:clamp(70px,10vh,110px)">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="14" rx="2"/><circle cx="12" cy="10" r="3"/></svg>
+        FOTO: DETALLE MATERIAL / MICROESFERAS
+      </div>
+    </div>
+    <div class="mat-list rv">
+      <div class="mat-row">
+        <div><div class="mat-name">Termoplástico Preformado</div><div class="mat-sub">Triple-A PPG · Ennis Flint · Instalación en frío</div></div>
+        <div class="mat-years">5–7 años</div>
+        <div><div class="mat-bar-wrap"><div class="mat-bar" style="--w:100%"></div></div></div>
+      </div>
+      <div class="mat-row">
+        <div><div class="mat-name">Termoplástico Convencional</div><div class="mat-sub">Aplicación en caliente · Alta resistencia al desgaste</div></div>
+        <div class="mat-years">3–5 años</div>
+        <div><div class="mat-bar-wrap"><div class="mat-bar" style="--w:65%"></div></div></div>
+      </div>
+      <div class="mat-row">
+        <div><div class="mat-name">Pintura Acrílica de Tránsito</div><div class="mat-sub">Base agua · Aplicación rápida · Bajo costo</div></div>
+        <div class="mat-years">1–2 años</div>
+        <div><div class="mat-bar-wrap"><div class="mat-bar" style="--w:24%"></div></div></div>
+      </div>
+      <div class="mat-row">
+        <div><div class="mat-name">Señalética Vertical</div><div class="mat-sub">Lámina retroreflectiva Tipo III–IV · Aluminio anodizado</div></div>
+        <div class="mat-years">10+ años</div>
+        <div><div class="mat-bar-wrap"><div class="mat-bar" style="--w:100%;background:var(--b)"></div></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ 6 · PROYECTOS ════════════════════════════════════════════════ -->
+<div class="slide" id="s6">
+  <div style="display:flex;flex-direction:column;gap:2.5vh;width:100%">
+    <div>
+      <p class="eyebrow rv">Portafolio</p>
+      <h2 class="h-big rv">Proyectos <em class="accent">destacados</em></h2>
+    </div>
+    <div class="proj-grid">
+
+      <div class="proj-card star rv d0">
+        <div class="proj-img">
+          <svg viewBox="0 0 300 90" xmlns="http://www.w3.org/2000/svg">
+            <rect width="300" height="90" fill="#0a0d14"/>
+            <rect x="0" y="32" width="300" height="26" fill="#111620"/>
+            <rect x="0" y="30" width="300" height="2" fill="#F5C518" opacity=".5"/>
+            <rect x="0" y="58" width="300" height="2" fill="#F5C518" opacity=".5"/>
+            <rect x="4"  y="43" width="45" height="5" rx="2" fill="#F5C518" opacity=".9"/>
+            <rect x="62" y="43" width="45" height="5" rx="2" fill="#F5C518" opacity=".9"/>
+            <rect x="120" y="43" width="45" height="5" rx="2" fill="#F5C518" opacity=".9"/>
+            <rect x="178" y="43" width="45" height="5" rx="2" fill="#F5C518" opacity=".9"/>
+            <rect x="236" y="43" width="45" height="5" rx="2" fill="#F5C518" opacity=".9"/>
+            <text x="4" y="80" font-size="8" fill="rgba(245,197,24,.3)" font-family="Poppins,sans-serif" font-weight="600" letter-spacing="1">MACROPLAZA · MONTERREY · 2024</text>
+          </svg>
+        </div>
+        <div class="proj-body">
+          <div class="proj-year">2024</div>
+          <div class="proj-name">Revive el Centro · Macroplaza</div>
+          <div class="proj-loc">Monterrey, Nuevo León</div>
+          <div class="proj-metric">Monterrey 2024</div>
+        </div>
+      </div>
+
+      <div class="proj-card star rv d1">
+        <div class="proj-img">
+          <svg viewBox="0 0 300 90" xmlns="http://www.w3.org/2000/svg">
+            <rect width="300" height="90" fill="#0a0d14"/>
+            <rect x="2"  y="5"  width="48" height="38" rx="1" fill="none" stroke="#E8EDF5" stroke-width="1.2" opacity=".4"/>
+            <rect x="58" y="5"  width="48" height="38" rx="1" fill="none" stroke="#E8EDF5" stroke-width="1.2" opacity=".4"/>
+            <rect x="114" y="5" width="48" height="38" rx="1" fill="none" stroke="#E8EDF5" stroke-width="1.2" opacity=".4"/>
+            <rect x="170" y="5" width="48" height="38" rx="1" fill="none" stroke="#E8EDF5" stroke-width="1.2" opacity=".4"/>
+            <rect x="226" y="5" width="48" height="38" rx="1" fill="none" stroke="#E8EDF5" stroke-width="1.2" opacity=".4"/>
+            <rect x="2"  y="50" width="48" height="38" rx="1" fill="none" stroke="#E8EDF5" stroke-width="1.2" opacity=".25"/>
+            <rect x="58" y="50" width="48" height="38" rx="1" fill="none" stroke="#E8EDF5" stroke-width="1.2" opacity=".25"/>
+            <rect x="0"  y="84" width="300" height="8" fill="#111620"/>
+            <rect x="4"  y="87" width="38" height="4" rx="2" fill="#F5C518" opacity=".9"/>
+            <rect x="52" y="87" width="38" height="4" rx="2" fill="#F5C518" opacity=".9"/>
+            <rect x="100" y="87" width="38" height="4" rx="2" fill="#F5C518" opacity=".9"/>
+            <text x="150" y="25" text-anchor="middle" font-size="9" fill="rgba(245,197,24,.2)" font-family="Poppins,sans-serif" font-weight="700" letter-spacing="1">38,000 M²</text>
+          </svg>
+        </div>
+        <div class="proj-body">
+          <div class="proj-year">2022</div>
+          <div class="proj-name">Amazon Tlajomulco</div>
+          <div class="proj-loc">Jalisco, México</div>
+          <div class="proj-metric">38,000 m²</div>
+        </div>
+      </div>
+
+      <div class="proj-card rv d2">
+        <div class="proj-img">
+          <svg viewBox="0 0 300 90" xmlns="http://www.w3.org/2000/svg">
+            <rect width="300" height="90" fill="#0a0d14"/>
+            <rect x="2"   y="28" width="40" height="34" rx="1" fill="#F5C518" opacity=".8"/>
+            <rect x="54"  y="28" width="40" height="34" rx="1" fill="#F5C518" opacity=".8"/>
+            <rect x="106" y="28" width="40" height="34" rx="1" fill="#F5C518" opacity=".8"/>
+            <rect x="158" y="28" width="40" height="34" rx="1" fill="#F5C518" opacity=".8"/>
+            <rect x="210" y="28" width="40" height="34" rx="1" fill="#F5C518" opacity=".8"/>
+            <rect x="262" y="28" width="36" height="34" rx="1" fill="#F5C518" opacity=".8"/>
+            <rect x="0" y="26" width="300" height="3" fill="#F5C518" opacity=".5"/>
+            <rect x="0" y="63" width="300" height="3" fill="#F5C518" opacity=".5"/>
+          </svg>
+        </div>
+        <div class="proj-body">
+          <div class="proj-year">2020–2023</div>
+          <div class="proj-name">Paso Seguro Zapopan</div>
+          <div class="proj-loc">Jalisco, México</div>
+          <div class="proj-metric">3 años</div>
+        </div>
+      </div>
+
+      <div class="proj-card rv d3">
+        <div class="proj-img">
+          <svg viewBox="0 0 300 90" xmlns="http://www.w3.org/2000/svg">
+            <rect width="300" height="90" fill="#0a0d14"/>
+            <rect x="50" y="0" width="50" height="90" fill="rgba(37,211,102,.06)"/>
+            <rect x="50" y="0" width="2" height="90" fill="#25D366" opacity=".5"/>
+            <rect x="98" y="0" width="2" height="90" fill="#25D366" opacity=".5"/>
+            <rect x="4"  y="43" width="36" height="4" rx="2" fill="#F5C518" opacity=".7"/>
+            <rect x="110" y="43" width="36" height="4" rx="2" fill="#F5C518" opacity=".7"/>
+            <rect x="156" y="43" width="36" height="4" rx="2" fill="#F5C518" opacity=".7"/>
+            <rect x="202" y="43" width="36" height="4" rx="2" fill="#F5C518" opacity=".7"/>
+            <rect x="248" y="43" width="36" height="4" rx="2" fill="#F5C518" opacity=".7"/>
+          </svg>
+        </div>
+        <div class="proj-body">
+          <div class="proj-year">2022–2023</div>
+          <div class="proj-name">Ciclovía Puente Santa Bárbara</div>
+          <div class="proj-loc">Corregidora, Querétaro</div>
+          <div class="proj-metric">1,200 ml</div>
+        </div>
+      </div>
+
+      <div class="proj-card rv d4">
+        <div class="proj-img">
+          <svg viewBox="0 0 300 90" xmlns="http://www.w3.org/2000/svg">
+            <rect width="300" height="90" fill="#0a0d14"/>
+            <rect x="30" y="0" width="50" height="90" fill="rgba(37,211,102,.05)"/>
+            <rect x="170" y="0" width="50" height="90" fill="rgba(37,211,102,.05)"/>
+            <rect x="30" y="0" width="2" height="90" fill="#25D366" opacity=".4"/>
+            <rect x="78" y="0" width="2" height="90" fill="#25D366" opacity=".4"/>
+            <rect x="170" y="0" width="2" height="90" fill="#25D366" opacity=".4"/>
+            <rect x="218" y="0" width="2" height="90" fill="#25D366" opacity=".4"/>
+            <rect x="2"  y="43" width="22" height="4" rx="2" fill="#F5C518" opacity=".6"/>
+            <rect x="88" y="43" width="74" height="4" rx="2" fill="#F5C518" opacity=".6"/>
+            <rect x="228" y="43" width="68" height="4" rx="2" fill="#F5C518" opacity=".6"/>
+          </svg>
+        </div>
+        <div class="proj-body">
+          <div class="proj-year">2019–2020</div>
+          <div class="proj-name">Ciclovías CDMX &amp; Querétaro</div>
+          <div class="proj-loc">Ciudad de México · Querétaro</div>
+          <div class="proj-metric">2 ciudades</div>
+        </div>
+      </div>
+
+      <div class="proj-card rv d5">
+        <div class="proj-img">
+          <svg viewBox="0 0 300 90" xmlns="http://www.w3.org/2000/svg">
+            <rect width="300" height="90" fill="#0a0d14"/>
+            <rect x="0" y="36" width="300" height="18" fill="#111620"/>
+            <rect x="2"  y="43" width="50" height="4" rx="2" fill="#F5C518" opacity=".9"/>
+            <rect x="64" y="43" width="50" height="4" rx="2" fill="#F5C518" opacity=".9"/>
+            <rect x="126" y="43" width="50" height="4" rx="2" fill="#F5C518" opacity=".9"/>
+            <rect x="188" y="43" width="50" height="4" rx="2" fill="#F5C518" opacity=".9"/>
+            <rect x="250" y="43" width="48" height="4" rx="2" fill="#F5C518" opacity=".9"/>
+            <rect x="0" y="34" width="300" height="2" fill="#F5C518" opacity=".4"/>
+            <rect x="0" y="54" width="300" height="2" fill="#F5C518" opacity=".4"/>
+            <text x="150" y="25" text-anchor="middle" font-size="9" fill="rgba(245,197,24,.2)" font-family="Poppins,sans-serif" font-weight="700" letter-spacing="2">AUTOPISTA</text>
+          </svg>
+        </div>
+        <div class="proj-body">
+          <div class="proj-year">2017</div>
+          <div class="proj-name">Autopista Durango–Mazatlán</div>
+          <div class="proj-loc">Durango · Sinaloa</div>
+          <div class="proj-metric">CAPUFE</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ══ 7 · CASO AMAZON ══════════════════════════════════════════════ -->
+<div class="slide" id="s7">
+  <div class="case-layout">
+    <div style="display:flex;flex-direction:column;gap:2.5vh">
+      <p class="eyebrow rv">Caso de éxito · 2022</p>
+      <h2 class="h-big rv"><em class="accent">Amazon</em><br>Tlajomulco</h2>
+      <p class="body-l rv">El proyecto de señalización integral más grande de nuestro portafolio. Centro de distribución Amazon en Tlajomulco, Jalisco — uno de los complejos logísticos más grandes de México.</p>
+      <!-- Foto aérea del proyecto — reemplazar con foto real del cliente -->
+      <div class="rv photo-ph" style="height:clamp(60px,8vh,90px)">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="14" rx="2"/><circle cx="12" cy="10" r="3"/></svg>
+        FOTO: VISTA AÉREA · AMAZON TLAJOMULCO
+      </div>
+      <div class="case-kpis rv">
+        <div class="kpi-row"><div class="kpi-val">38K</div><div class="kpi-lbl">m² de señalización integral en un solo proyecto</div></div>
+        <div class="kpi-row"><div class="kpi-val">3</div><div class="kpi-lbl">Áreas cubiertas: estacionamiento · patios · Protección Civil</div></div>
+        <div class="kpi-row"><div class="kpi-val">'22</div><div class="kpi-lbl">Año de instalación — cero mantenimiento hasta 2026</div></div>
+      </div>
+    </div>
+    <div class="rv">
+      <div class="case-visual">
+        <svg viewBox="0 0 560 315" xmlns="http://www.w3.org/2000/svg">
+          <rect width="560" height="315" fill="#0a0d14"/>
+          <rect x="2"   y="5"   width="66" height="56" rx="2" fill="none" stroke="#E8EDF5" stroke-width="1.5" opacity=".4"/>
+          <rect x="80"  y="5"   width="66" height="56" rx="2" fill="none" stroke="#E8EDF5" stroke-width="1.5" opacity=".4"/>
+          <rect x="158" y="5"   width="66" height="56" rx="2" fill="none" stroke="#E8EDF5" stroke-width="1.5" opacity=".4"/>
+          <rect x="236" y="5"   width="66" height="56" rx="2" fill="none" stroke="#E8EDF5" stroke-width="1.5" opacity=".4"/>
+          <rect x="314" y="5"   width="66" height="56" rx="2" fill="none" stroke="#E8EDF5" stroke-width="1.5" opacity=".4"/>
+          <rect x="392" y="5"   width="66" height="56" rx="2" fill="none" stroke="#E8EDF5" stroke-width="1.5" opacity=".4"/>
+          <rect x="470" y="5"   width="88" height="56" rx="2" fill="none" stroke="#E8EDF5" stroke-width="1.5" opacity=".25"/>
+          <rect x="2"   y="73"  width="66" height="56" rx="2" fill="none" stroke="#E8EDF5" stroke-width="1.5" opacity=".4"/>
+          <rect x="80"  y="73"  width="66" height="56" rx="2" fill="none" stroke="#E8EDF5" stroke-width="1.5" opacity=".4"/>
+          <rect x="158" y="73"  width="66" height="56" rx="2" fill="none" stroke="#E8EDF5" stroke-width="1.5" opacity=".4"/>
+          <rect x="236" y="73"  width="66" height="56" rx="2" fill="none" stroke="#E8EDF5" stroke-width="1.5" opacity=".4"/>
+          <rect x="314" y="73"  width="66" height="56" rx="2" fill="none" stroke="#E8EDF5" stroke-width="1.5" opacity=".4"/>
+          <rect x="392" y="73"  width="66" height="56" rx="2" fill="none" stroke="#E8EDF5" stroke-width="1.5" opacity=".4"/>
+          <rect x="2"   y="141" width="66" height="56" rx="2" fill="none" stroke="#E8EDF5" stroke-width="1.5" opacity=".25"/>
+          <rect x="80"  y="141" width="66" height="56" rx="2" fill="none" stroke="#E8EDF5" stroke-width="1.5" opacity=".25"/>
+          <rect x="158" y="141" width="66" height="56" rx="2" fill="none" stroke="#E8EDF5" stroke-width="1.5" opacity=".25"/>
+          <rect x="236" y="141" width="66" height="56" rx="2" fill="none" stroke="#E8EDF5" stroke-width="1.5" opacity=".25"/>
+          <rect x="314" y="141" width="154" height="56" rx="2" fill="rgba(245,197,24,.06)" stroke="#F5C518" stroke-width="1.5" opacity=".6"/>
+          <rect x="0"   y="280" width="560" height="35" fill="#111620"/>
+          <rect x="4"   y="292" width="58" height="8" rx="4" fill="#F5C518" opacity=".9"/>
+          <rect x="72"  y="292" width="58" height="8" rx="4" fill="#F5C518" opacity=".9"/>
+          <rect x="140" y="292" width="58" height="8" rx="4" fill="#F5C518" opacity=".9"/>
+          <rect x="208" y="292" width="58" height="8" rx="4" fill="#F5C518" opacity=".9"/>
+          <rect x="276" y="292" width="58" height="8" rx="4" fill="#F5C518" opacity=".9"/>
+          <rect x="344" y="292" width="58" height="8" rx="4" fill="#F5C518" opacity=".9"/>
+          <rect x="412" y="292" width="58" height="8" rx="4" fill="#F5C518" opacity=".9"/>
+          <rect x="480" y="292" width="76" height="8" rx="4" fill="#F5C518" opacity=".9"/>
+          <text x="280" y="220" text-anchor="middle" font-size="13" fill="rgba(245,197,24,.18)" font-family="Poppins,sans-serif" font-weight="700" letter-spacing="3">38,000 M²</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ 8 · POR QUÉ SIVSA ════════════════════════════════════════════ -->
+<div class="slide" id="s8">
+  <div style="display:flex;flex-direction:column;gap:4vh;width:100%;align-items:center">
+    <div style="text-align:center">
+      <p class="eyebrow rv">Diferenciadores</p>
+      <h2 class="h-big rv">¿Por qué elegir <em class="accent">SIVSA?</em></h2>
+    </div>
+    <div class="pillars">
+      <div class="pillar rv d0">
+        <div class="pillar-icon">
+          <svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+            <circle cx="14" cy="14" r="10"/>
+            <circle cx="14" cy="14" r="5"/>
+            <line x1="14" y1="4" x2="14" y2="1"/>
+            <line x1="24" y1="14" x2="27" y2="14"/>
+            <line x1="14" y1="24" x2="14" y2="27"/>
+            <line x1="4"  y1="14" x2="1"  y2="14"/>
+          </svg>
+        </div>
+        <h3>Retroreflectividad Certificada</h3>
+        <p>Sus señalamientos serán visibles de noche y con lluvia. Microesferas de vidrio integradas en todos nuestros materiales. El conductor ve su vía — eso salva vidas.</p>
+      </div>
+      <div class="pillar rv d1">
+        <div class="pillar-icon">
+          <svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+            <path d="M14 3l2.8 5.7 6.2.9-4.5 4.4 1.1 6.2L14 17.5 8.4 20.2l1.1-6.2L5 9.6l6.2-.9z"/>
+          </svg>
+        </div>
+        <h3>Alta Durabilidad Comprobada</h3>
+        <p>Termoplásticos preformados con vida útil de 5–7 años. Menos paros de obra, menos presupuesto en mantenimiento, mayor retorno de inversión para su proyecto.</p>
+      </div>
+      <div class="pillar rv d2">
+        <div class="pillar-icon">
+          <svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+            <path d="M14 4l8 4v7c0 5-8 9-8 9s-8-4-8-9V8z"/>
+            <polyline points="10,14 13,17 18,11"/>
+          </svg>
+        </div>
+        <h3>Única Certificación Triple-A</h3>
+        <p>PPG Industries USA nos certifica como la única empresa en México para instalación de preformados. No hay otro contratista con este respaldo — su proyecto merece el mejor.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ 9 · PROCESO ══════════════════════════════════════════════════ -->
+<div class="slide" id="s9">
+  <div style="display:flex;flex-direction:column;gap:4vh;width:100%">
+    <div>
+      <p class="eyebrow rv">Metodología</p>
+      <h2 class="h-big rv">Cómo <em class="accent">trabajamos</em></h2>
+    </div>
+    <div class="process-grid">
+      <div class="proc-step rv d0">
+        <div class="proc-num">01</div>
+        <div class="proc-title">Diagnóstico</div>
+        <div class="proc-desc">Visita técnica al sitio, levantamiento de condiciones y recomendación de materiales según el tipo de vía y tráfico estimado.</div>
+      </div>
+      <div class="proc-step rv d1">
+        <div class="proc-num">02</div>
+        <div class="proc-title">Propuesta Técnica</div>
+        <div class="proc-desc">Propuesta con especificaciones de material, normativa aplicable y garantías de durabilidad. Cotización sin costo.</div>
+      </div>
+      <div class="proc-step rv d2">
+        <div class="proc-num">03</div>
+        <div class="proc-title">Instalación</div>
+        <div class="proc-desc">Equipo especializado con maquinaria de última generación. Instalación nocturna disponible para minimizar afectación al tráfico.</div>
+      </div>
+      <div class="proc-step rv d3">
+        <div class="proc-num">04</div>
+        <div class="proc-title">Garantía y Seguimiento</div>
+        <div class="proc-desc">Verificación post-instalación y asesoría técnica continua. Si el material falla antes del tiempo comprometido, lo corregimos.</div>
+      </div>
+    </div>
+    <div class="norms-row rv">
+      <span class="norm-tag">NMX-SCT-2-1-03</span>
+      <span class="norm-tag">NMX-SCT-2-2-01</span>
+      <span class="norm-tag">NOM-003-SEGOB</span>
+      <span class="norm-tag">ICAO Anexo 14</span>
+      <span class="norm-tag">Ennis Flint Certified</span>
+      <span class="norm-tag">PPG Triple-A USA</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══ 10 · CTA ═════════════════════════════════════════════════════ -->
+<div class="slide" id="s10">
+  <div class="cta-layout">
+    <p class="eyebrow rv">Siguiente paso</p>
+    <h2 class="h-big rv" style="text-align:center">¿Empezamos su<br><em class="accent">proyecto?</em></h2>
+    <p class="body-l rv" style="max-width:44vw;text-align:center">Cotización sin costo · Atención personalizada · Respuesta en menos de 2 horas</p>
+    <a class="cta-wa rv" href="https://wa.me/524426417958?text=Hola+SIVSA%2C+me+interesa+cotizar+un+proyecto+de+se%C3%B1alizaci%C3%B3n+vial." target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Iniciar conversación en WhatsApp
+    </a>
+    <div class="cta-contacts rv">
+      <div class="cta-contact">📞 <strong>(442) 641 7958</strong> &nbsp;·&nbsp; <strong>(446) 169 0299</strong></div>
+      <div class="cta-contact">✉ <strong>operaciones@sivsamx.com</strong></div>
+      <div class="cta-contact">🌐 <strong>www.sivsamx.com</strong></div>
+    </div>
+    <p class="rv" style="font-family:var(--fm);font-size:.72rem;color:var(--t3);margin-top:.5vh;letter-spacing:2px">SIVSA · SERVICIOS DE INGENIERÍA VIAL · QUERÉTARO, MÉXICO · EST. 2008</p>
+  </div>
+</div>
+
+</div><!-- /deck -->
+
+<!-- CONTROLS -->
+<div id="controls">
+  <div class="ctrl-nav">
+    <button class="ctrl-btn" id="bprev" onclick="nav(-1)" aria-label="Anterior">←</button>
+    <span class="slide-ctr" id="sctr">1 / 11</span>
+    <button class="ctrl-btn" id="bnext" onclick="nav(1)" aria-label="Siguiente">→</button>
+  </div>
+  <div class="ctrl-right">
+    <button class="auto-btn" id="abtn" onclick="toggleAuto()">⏵ AUTO</button>
+    <button class="ctrl-btn" onclick="toggleFS()" title="Pantalla completa (F)">⛶</button>
+    <button class="ctrl-btn" onclick="showHelp()" title="Ayuda (H)">?</button>
+  </div>
+</div>
+<div id="progress"><div id="pfill"></div></div>
+
+<div class="auto-ring" id="aring">
+  <svg viewBox="0 0 32 32" width="32" height="32">
+    <circle cx="16" cy="16" r="13" fill="none" stroke="rgba(255,255,255,.1)" stroke-width="2.5"/>
+    <circle id="rcircle" cx="16" cy="16" r="13" fill="none" stroke="#F5C518" stroke-width="2.5"
+      stroke-linecap="round" stroke-dasharray="82" stroke-dashoffset="82" transform="rotate(-90 16 16)"/>
+  </svg>
+</div>
+
+<div class="toast" id="toast">
+  <h3>Atajos de teclado</h3>
+  <div class="toast-keys">
+    <div class="toast-key"><kbd>→</kbd><kbd>Space</kbd><span>Siguiente</span></div>
+    <div class="toast-key"><kbd>←</kbd><span>Anterior</span></div>
+    <div class="toast-key"><kbd>F</kbd><span>Pantalla completa</span></div>
+    <div class="toast-key"><kbd>A</kbd><span>Auto-avance 10s</span></div>
+    <div class="toast-key"><kbd>H</kbd><span>Esta ayuda</span></div>
+    <div class="toast-key"><kbd>Esc</kbd><span>Cerrar</span></div>
+  </div>
+</div>
 
 <script>
-/* ── SVG SCENE GENERATORS ─────────────────────────────────────────── */
-const S = {
-  /* Road with center dashes — amber */
-  roadDashes:(a=1)=>`<svg viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg">
-    <rect width="400" height="220" fill="#0a0d14"/>
-    <rect x="0" y="80" width="400" height="60" fill="#111620"/>
-    <rect x="0" y="78" width="400" height="2" fill="#F5C518" opacity=".6"/>
-    <rect x="0" y="140" width="400" height="2" fill="#F5C518" opacity=".6"/>
-    ${[0,1,2,3,4].map(i=>`<rect x="${i*85+10}" y="108" width="52" height="4" rx="2" fill="#F5C518" opacity="${a}"/>`).join('')}
-    <rect x="0" y="78" width="400" height="2" fill="#E8EDF5" opacity=".25"/>
-    <rect x="0" y="140" width="400" height="2" fill="#E8EDF5" opacity=".25"/>
-  </svg>`,
+const TOTAL=11;let cur=0,auto=false,aTimer=null,aMs=10000,aStart=0,hideCtrl;
 
-  /* Crosswalk — white stripes */
-  crosswalk:(tint='#F5C518')=>`<svg viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg">
-    <rect width="400" height="220" fill="#0a0d14"/>
-    <rect x="0" y="90" width="400" height="40" fill="#111620"/>
-    ${[0,1,2,3,4,5,6].map(i=>`<rect x="${i*52+20}" y="90" width="32" height="40" rx="2" fill="#E8EDF5" opacity=".88"/>`).join('')}
-    <rect x="0" y="88" width="400" height="2" fill="${tint}" opacity=".5"/>
-    <rect x="0" y="132" width="400" height="2" fill="${tint}" opacity=".5"/>
-  </svg>`,
-
-  /* Arrow — turn left */
-  arrow:(color='#F5C518')=>`<svg viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg">
-    <rect width="400" height="220" fill="#0a0d14"/>
-    <rect x="0" y="60" width="400" height="100" fill="#111620"/>
-    <g transform="translate(170,70)">
-      <rect x="25" y="0" width="12" height="60" rx="6" fill="${color}" opacity=".9"/>
-      <polygon points="0,30 37,5 37,55" fill="${color}" opacity=".9"/>
-    </g>
-    <rect x="0" y="58" width="400" height="2" fill="${color}" opacity=".35"/>
-    <rect x="0" y="162" width="400" height="2" fill="${color}" opacity=".35"/>
-  </svg>`,
-
-  /* Bike lane — green */
-  bikeLane:()=>`<svg viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg">
-    <rect width="400" height="220" fill="#0a0d14"/>
-    <rect x="60" y="0" width="100" height="220" fill="rgba(37,211,102,.08)"/>
-    <rect x="60" y="0" width="2" height="220" fill="#25D366" opacity=".5"/>
-    <rect x="160" y="0" width="2" height="220" fill="#25D366" opacity=".5"/>
-    <g transform="translate(95,85)" fill="#25D366" opacity=".8">
-      <circle cx="20" cy="12" r="5" stroke="#25D366" stroke-width="2.5" fill="none"/>
-      <circle cx="0" cy="32" r="8" stroke="#25D366" stroke-width="2.5" fill="none"/>
-      <circle cx="40" cy="32" r="8" stroke="#25D366" stroke-width="2.5" fill="none"/>
-      <line x1="20" y1="17" x2="20" y2="28" stroke="#25D366" stroke-width="2.5" stroke-linecap="round"/>
-      <line x1="20" y1="28" x2="0" y2="24" stroke="#25D366" stroke-width="2.5" stroke-linecap="round"/>
-      <line x1="20" y1="28" x2="40" y2="24" stroke="#25D366" stroke-width="2.5" stroke-linecap="round"/>
-    </g>
-    ${[0,1,2,3,4].map(i=>`<rect x="${i*52+180}" y="108" width="30" height="4" rx="2" fill="#F5C518" opacity=".6"/>`).join('')}
-  </svg>`,
-
-  /* Vertical sign */
-  sign:(color='#e53e3e',text='ALTO')=>`<svg viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg">
-    <rect width="400" height="220" fill="#0a0d14"/>
-    <line x1="200" y1="170" x2="200" y2="220" stroke="#8A95A8" stroke-width="6"/>
-    <line x1="185" y1="220" x2="215" y2="220" stroke="#8A95A8" stroke-width="4"/>
-    <polygon points="200,30 240,50 240,110 200,130 160,110 160,50" fill="${color}" stroke="white" stroke-width="4"/>
-    <text x="200" y="90" text-anchor="middle" font-family="Poppins,sans-serif" font-weight="700" font-size="22" fill="white">${text}</text>
-    <rect x="120" y="168" width="160" height="4" rx="2" fill="#3D8EF0" opacity=".4"/>
-  </svg>`,
-
-  /* Speed sign */
-  speedSign:(n='60')=>`<svg viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg">
-    <rect width="400" height="220" fill="#0a0d14"/>
-    <line x1="200" y1="165" x2="200" y2="220" stroke="#8A95A8" stroke-width="6"/>
-    <circle cx="200" cy="95" r="62" fill="white" stroke="#e53e3e" stroke-width="8"/>
-    <circle cx="200" cy="95" r="50" fill="white"/>
-    <text x="200" y="108" text-anchor="middle" font-family="Poppins,sans-serif" font-weight="700" font-size="42" fill="#1a202c">${n}</text>
-  </svg>`,
-
-  /* Industrial floor */
-  industrial:()=>`<svg viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg">
-    <rect width="400" height="220" fill="#0a0d14"/>
-    <rect x="0" y="0" width="80" height="220" fill="rgba(245,197,24,.06)"/>
-    <rect x="0" y="0" width="4" height="220" fill="#F5C518" opacity=".7"/>
-    <rect x="76" y="0" width="4" height="220" fill="#F5C518" opacity=".7"/>
-    ${[0,1,2,3,4].map(i=>`<rect x="4" y="${i*44+4}" width="72" height="22" rx="0" fill="#F5C518" opacity="${i%2===0?.55:.0}"/>`).join('')}
-    ${[0,1,2].map(i=>`<rect x="${i*140+120}" y="0" width="80" height="220" fill="rgba(37,211,102,.04)" stroke="#25D366" stroke-width="1.5" stroke-opacity=".35" fill-opacity="1"/>`).join('')}
-    <text x="310" y="118" text-anchor="middle" font-family="Poppins,sans-serif" font-weight="700" font-size="11" fill="#25D366" opacity=".6">ÁREA</text>
-    <text x="310" y="130" text-anchor="middle" font-family="Poppins,sans-serif" font-weight="700" font-size="11" fill="#25D366" opacity=".6">SEGURA</text>
-  </svg>`,
-
-  /* Parking grid */
-  parking:()=>`<svg viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg">
-    <rect width="400" height="220" fill="#0a0d14"/>
-    ${[0,1,2,3,4,5].map(i=>`<rect x="${i*66+4}" y="20" width="1.5" height="180" fill="#E8EDF5" opacity=".55"/>`).join('')}
-    <rect x="4" y="20" width="392" height="1.5" fill="#E8EDF5" opacity=".55"/>
-    <rect x="4" y="200" width="392" height="1.5" fill="#E8EDF5" opacity=".55"/>
-    <rect x="4" y="20" width="392" height="80" fill="rgba(61,142,240,.05)"/>
-    <text x="37" y="67" text-anchor="middle" font-family="Poppins,sans-serif" font-size="14" font-weight="700" fill="#E8EDF5" opacity=".15">1</text>
-    <text x="103" y="67" text-anchor="middle" font-family="Poppins,sans-serif" font-size="14" font-weight="700" fill="#E8EDF5" opacity=".15">2</text>
-    <text x="169" y="67" text-anchor="middle" font-family="Poppins,sans-serif" font-size="14" font-weight="700" fill="#E8EDF5" opacity=".15">3</text>
-    <text x="200" y="170" text-anchor="middle" font-family="Poppins,sans-serif" font-size="11" font-weight="700" fill="#3D8EF0" opacity=".4">♿  DISCAPACIDAD</text>
-  </svg>`,
-
-  /* Airport taxiway */
-  airport:()=>`<svg viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg">
-    <rect width="400" height="220" fill="#0a0d14"/>
-    <rect x="0" y="90" width="400" height="40" fill="#111620"/>
-    ${[0,1,2,3,4,5,6,7,8].map(i=>`<rect x="${i*50+4}" y="108" width="30" height="4" rx="2" fill="#F5C518" opacity=".9"/>`).join('')}
-    <rect x="0" y="88" width="400" height="2" fill="#F5C518" opacity=".6"/>
-    <rect x="0" y="132" width="400" height="2" fill="#F5C518" opacity=".6"/>
-    <rect x="150" y="60" width="100" height="30" rx="2" fill="rgba(245,197,24,.12)" stroke="#F5C518" stroke-width="1" opacity=".7"/>
-    <text x="200" y="80" text-anchor="middle" font-family="Poppins,sans-serif" font-size="10" font-weight="700" fill="#F5C518" opacity=".8">A4</text>
-  </svg>`,
-
-  /* Material close-up texture */
-  texture:(color='#F5C518')=>`<svg viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg">
-    <defs>
-      <pattern id="beads" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
-        <circle cx="10" cy="10" r="1.5" fill="white" opacity=".4"/>
-        <circle cx="3" cy="5" r="1" fill="white" opacity=".25"/>
-        <circle cx="16" cy="16" r="1.2" fill="white" opacity=".35"/>
-      </pattern>
-    </defs>
-    <rect width="400" height="220" fill="${color}" opacity=".85"/>
-    <rect width="400" height="220" fill="#0a0d14" opacity=".3"/>
-    <rect width="400" height="220" fill="url(#beads)"/>
-    <text x="200" y="120" text-anchor="middle" font-family="Space Mono,monospace" font-size="10" fill="rgba(255,255,255,.3)" letter-spacing="3">MICROESFERAS DE VIDRIO INTEGRADAS</text>
-  </svg>`,
-
-  /* Night retroreflection simulation */
-  night:(color='#F5C518')=>`<svg viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg">
-    <rect width="400" height="220" fill="#020408"/>
-    <rect x="0" y="95" width="400" height="30" fill="#0a0d14"/>
-    <defs>
-      <radialGradient id="beam" cx="50%" cy="100%" r="80%">
-        <stop offset="0%" stop-color="white" stop-opacity=".08"/>
-        <stop offset="100%" stop-color="white" stop-opacity="0"/>
-      </radialGradient>
-    </defs>
-    <rect width="400" height="220" fill="url(#beam)"/>
-    ${[0,1,2,3,4].map(i=>`<rect x="${i*85+10}" y="104" width="52" height="6" rx="3" fill="${color}" opacity=".95" filter="url(#glow)"/>`).join('')}
-    <defs>
-      <filter id="glow">
-        <feGaussianBlur stdDeviation="3" result="blur"/>
-        <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-      </filter>
-    </defs>
-    ${[0,1,2,3,4].map(i=>`<rect x="${i*85+10}" y="104" width="52" height="6" rx="3" fill="${color}" opacity=".9"/>`).join('')}
-    <text x="200" y="190" text-anchor="middle" font-family="Space Mono,monospace" font-size="9" fill="rgba(255,255,255,.25)" letter-spacing="2">VISIBILIDAD NOCTURNA — RETROREFLECTIVIDAD ALTA</text>
-  </svg>`,
-
-  /* School pedestrian */
-  school:()=>`<svg viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg">
-    <rect width="400" height="220" fill="#0a0d14"/>
-    ${[0,1,2,3,4,5,6].map(i=>`<rect x="${i*52+20}" y="80" width="32" height="60" rx="1" fill="#F5C518" opacity=".88"/>`).join('')}
-    <rect x="0" y="78" width="400" height="3" fill="#F5C518" opacity=".7"/>
-    <rect x="0" y="142" width="400" height="3" fill="#F5C518" opacity=".7"/>
-    <g transform="translate(340,40)" fill="#F5C518">
-      <circle cx="12" cy="8" r="5"/>
-      <rect x="8" y="14" width="8" height="16" rx="4"/>
-      <line x1="4" y1="20" x2="20" y2="20" stroke="#F5C518" stroke-width="2.5" stroke-linecap="round"/>
-      <line x1="8" y1="30" x2="6" y2="40" stroke="#F5C518" stroke-width="2.5" stroke-linecap="round"/>
-      <line x1="16" y1="30" x2="18" y2="40" stroke="#F5C518" stroke-width="2.5" stroke-linecap="round"/>
-    </g>
-    <text x="30" y="200" font-family="Poppins,sans-serif" font-size="9" font-weight="700" fill="#F5C518" opacity=".5" letter-spacing="2">ZONA ESCOLAR</text>
-  </svg>`,
-};
-
-/* ── PRODUCT DATA ─────────────────────────────────────────────────── */
-const CATS = [
-  {id:'all',    label:'Todos'},
-  {id:'horizontal', label:'Señalización Horizontal'},
-  {id:'vertical',   label:'Señalización Vertical'},
-  {id:'ciclovias',  label:'Ciclovías y Peatonal'},
-  {id:'industrial', label:'Industrial'},
-  {id:'aeropuertos',label:'Aeropuertos'},
-  {id:'estacionamientos',label:'Estacionamientos'},
-];
-
-const PRODUCTS = [
-  {
-    id:1, cat:'horizontal', catLabel:'Señalización Horizontal', badge:'Triple-A PPG',
-    name:'Termoplástico Preformado MMax',
-    desc:'Sistema de alta durabilidad para líneas de carril, guiones y marcas de alto tránsito. Instalación en frío mediante calor de inducción.',
-    specs:[['Durabilidad','5–7 años'],['Aplicación','En frío con calor'],['Colores','Blanco · Amarillo'],['Retroreflectividad','Alta — integrada'],['Norma','NMX-SCT-2-1-03'],['Proveedor','Ennis Flint']],
-    images:[
-      {svg:S.roadDashes(),label:'Vista de aplicación',desc:'Guiones centrales en carretera federal de alto tráfico. Apariencia uniforme a 12 meses de instalación.'},
-      {svg:S.texture(),label:'Detalle del material',desc:'Superficie del termoplástico con microesferas de vidrio integradas que garantizan retroreflectividad máxima.'},
-      {svg:S.night(),label:'Visibilidad nocturna',desc:'Bajo iluminación de faros a 100m. El material devuelve la luz hacia el conductor con alta intensidad.'},
-    ]
-  },
-  {
-    id:2, cat:'horizontal', catLabel:'Señalización Horizontal',
-    name:'Paso Peatonal Preformado',
-    desc:'Franjas de cruce peatonal en termoplástico preformado. Alta visibilidad, instalación rápida y mínima interferencia al tráfico.',
-    specs:[['Durabilidad','4–6 años'],['Ancho de franja','45 cm estándar'],['Espaciado','45 cm'],['Colores','Blanco'],['Retroreflectividad','Alta'],['Norma','SCT-2-1-03']],
-    images:[
-      {svg:S.crosswalk(),label:'Vista aérea del cruce',desc:'Paso peatonal con 8 franjas instalado en intersección urbana de alta afluencia peatonal.'},
-      {svg:S.texture('#E8EDF5'),label:'Textura retroreflectiva',desc:'Superficie con perfil antideslizante y microesferas de vidrio integradas para visibilidad en mojado.'},
-      {svg:S.night('#E8EDF5'),label:'Retroreflexión nocturna',desc:'Visibilidad del paso peatonal bajo iluminación vehicular — resultado crítico para zonas escolares.'},
-    ]
-  },
-  {
-    id:3, cat:'horizontal', catLabel:'Señalización Horizontal',
-    name:'Flechas y Símbolos Preformados',
-    desc:'Flechas de dirección, símbolos de bicicleta, leyendas ALTO y CEDA EL PASO en termoplástico preformado.',
-    specs:[['Material','Termoplástico preformado'],['Durabilidad','5–6 años'],['Colores','Blanco · Amarillo · Verde'],['Dimensiones','Según norma SCT'],['Retroreflectividad','Media-alta'],['Aplicación','En frío']],
-    images:[
-      {svg:S.arrow(),label:'Flecha de vuelta',desc:'Flecha direccional instalada en carril de acceso a vialidad primaria en Zapopan, Jalisco.'},
-      {svg:S.crosswalk('#3D8EF0'),label:'Símbolo ciclista',desc:'Símbolo preformado de ciclovía instalado en carril exclusivo con material de alto contraste.'},
-      {svg:S.texture('#3D8EF0'),label:'Detalle de acabado',desc:'Vista macro del material — perfil texturizado para mejor adhesión y agarre del neumático.'},
-    ]
-  },
-  {
-    id:4, cat:'horizontal', catLabel:'Señalización Horizontal',
-    name:'Termoplástico Convencional',
-    desc:'Material fundido aplicado en caliente mediante extrusora. Alta adhesión a la carpeta asfáltica y resistencia a tráfico pesado.',
-    specs:[['Durabilidad','3–5 años'],['Aplicación','Caliente — extrusora'],['Temp. aplicación','180–200 °C'],['Colores','Blanco · Amarillo'],['Retroreflectividad','Media-alta'],['Norma','NMX-SCT-2-1-03']],
-    images:[
-      {svg:S.roadDashes(.7),label:'Línea continua',desc:'Línea de orilla continua aplicada en carretera estatal de 4 carriles — resistencia verificada a tráfico pesado.'},
-      {svg:S.texture('#e8a200'),label:'Perfil del material',desc:'Sección transversal con espesor típico de 1.8–2.2mm — mayor masa que la pintura convencional.'},
-      {svg:S.night('#e8a200'),label:'Rendimiento nocturno',desc:'Retroreflectividad a 2 años de instalación en zona de tráfico intenso.'},
-    ]
-  },
-  {
-    id:5, cat:'horizontal', catLabel:'Señalización Horizontal',
-    name:'Pintura Acrílica de Tránsito',
-    desc:'Pintura base agua de secado rápido para señalización de bajo y mediano tránsito. Aplicación con máquina autopropulsada.',
-    specs:[['Durabilidad','1–2 años'],['Base','Agua acrílica'],['Secado','30–45 min'],['Colores','Blanco · Amarillo'],['Retroreflectividad','Media'],['Uso ideal','Zonas residenciales · Bajo tráfico']],
-    images:[
-      {svg:S.roadDashes(.5),label:'Aplicación en vía local',desc:'Guiones de carril en colonia residencial — solución económica para vialidades de bajo tránsito.'},
-      {svg:S.texture('#fbbf24'),label:'Textura post-aplicación',desc:'Superficie con microesferas drop-on aplicadas durante la instalación para retroreflectividad inmediata.'},
-      {svg:S.parking(),label:'Uso en estacionamiento',desc:'Delimitación de cajones en área comercial — acabado limpio con máquina autopropulsada.'},
-    ]
-  },
-  {
-    id:6, cat:'vertical', catLabel:'Señalización Vertical', badge:'Tipo III – IV',
-    name:'Señal Reglamentaria Retroreflectiva',
-    desc:'Señales ALTO, velocidad máxima, CEDA EL PASO y demás reglamentarias con lámina retroreflectiva Tipo III o IV.',
-    specs:[['Sustrato','Aluminio anodizado 2mm'],['Retroreflectividad','Tipo III · Tipo IV'],['Vida útil lámina','10 años'],['Marco','Perfil omega galvanizado'],['Dimensiones','Según SCT-2-2-01'],['Norma','NMX-SCT-2-2-01']],
-    images:[
-      {svg:S.sign('#e53e3e','ALTO'),label:'Señal de ALTO octagonal',desc:'Señal ALTO en lámina retroreflectiva Tipo IV instalada en intersección urbana de Querétaro.'},
-      {svg:S.speedSign('60'),label:'Señal de velocidad máxima',desc:'Límite de velocidad 60 km/h con fondo blanco y orla roja — cumple NMX-SCT-2-2-01.'},
-      {svg:S.texture('#dc2626'),label:'Lámina retroreflectiva Tipo IV',desc:'Detalle de lámina prismática de alta intensidad — visible a 300m bajo iluminación vehicular.'},
-    ]
-  },
-  {
-    id:7, cat:'vertical', catLabel:'Señalización Vertical',
-    name:'Señal Preventiva',
-    desc:'Señales de advertencia en forma de rombo para indicar condiciones especiales: curvas, escuelas, puentes, topes y más.',
-    specs:[['Forma','Rombo o rectángulo'],['Color','Amarillo / Negro'],['Sustrato','Aluminio 2mm'],['Lámina','Tipo I o III'],['Vida útil','7–10 años'],['Norma','NMX-SCT-2-2-01']],
-    images:[
-      {svg:S.sign('#F5C518','⚠'),label:'Señal preventiva estándar',desc:'Señal preventiva de cruce escolar instalada en avenida escolar con lámina Tipo III.'},
-      {svg:S.sign('#F5C518','TOPE'),label:'Señal de tope',desc:'Advertencia de tope en lámina amarilla — uno de los señalamientos más comunes en zonas urbanas.'},
-      {svg:S.texture('#c9a000'),label:'Lámina Tipo III',desc:'Lámina Engineering Grade Prismática — relación costo-efectividad óptima para vialidades secundarias.'},
-    ]
-  },
-  {
-    id:8, cat:'vertical', catLabel:'Señalización Vertical',
-    name:'Señal Informativa de Destino',
-    desc:'Señales de información para guiar al usuario hacia destinos, servicios y puntos de interés en vialidades primarias.',
-    specs:[['Color','Verde / Blanco'],['Sustrato','Aluminio 2mm'],['Lámina','Tipo III o IV alta intensidad'],['Tipografía','SCT estándar'],['Tamaño','Variable por vía'],['Norma','NMX-SCT-2-2-01']],
-    images:[
-      {svg:S.sign('#276749','CENTRO →'),label:'Señal de destino',desc:'Señal informativa verde de destino instalada en boulevard de acceso a zona centro.'},
-      {svg:S.sign('#1a4a6b','AEROPUERTO ✈'),label:'Señal de aeropuerto',desc:'Señalización informativa de acceso a aeropuerto con símbolo internacional y lámina Tipo IV.'},
-      {svg:S.texture('#276749'),label:'Lámina alta intensidad',desc:'Lámina Tipo IV prismática — retroreflectividad superior para uso en vialidades de alta velocidad.'},
-    ]
-  },
-  {
-    id:9, cat:'ciclovias', catLabel:'Ciclovías y Peatonal', badge:'Ennis Flint',
-    name:'Demarcación Carril Bicicleta',
-    desc:'Sistema integral de señalización para carriles exclusivos de bicicleta: líneas, flechas-bici y símbolos en preformado o pintura.',
-    specs:[['Material','Preformado o termoplástico'],['Color','Verde · Blanco'],['Durabilidad','4–6 años'],['Símbolo bici','Conforme SCT'],['Línea de carril','15 cm ancho'],['Norma','SCT-Ciclovías 2019']],
-    images:[
-      {svg:S.bikeLane(),label:'Carril bicicleta exclusivo',desc:'Ciclovía con demarcación preformada verde — Corregidora, Querétaro. Proyecto 2022–2023.'},
-      {svg:S.arrow('#25D366'),label:'Flecha-bici preformada',desc:'Símbolo de carril bici con flecha directional — instalación en frío, resistencia 5 años comprobada.'},
-      {svg:S.texture('#25D366'),label:'Material preformado verde',desc:'Termoplástico preformado en color verde — alta durabilidad y color estable sin decoloración UV.'},
-    ]
-  },
-  {
-    id:10, cat:'ciclovias', catLabel:'Ciclovías y Peatonal',
-    name:'Paso Seguro Escolar',
-    desc:'Demarcación de alta visibilidad para zonas de cruce escolar: pasos amarillos, leyendas, flechas de advertencia y señalización vertical.',
-    specs:[['Color','Amarillo predominante'],['Material','Preformado o termoplástico'],['Visibilidad','Alta — Tipo IV opcional'],['Durabilidad','4–6 años'],['Componentes','Franja + leyenda + señal'],['Aplicaciones','Zonas K-12']],
-    images:[
-      {svg:S.school(),label:'Paso seguro completo',desc:'Sistema de paso seguro escolar instalado en acceso a primaria — Zapopan, Jalisco. 2021.'},
-      {svg:S.crosswalk('#F5C518'),label:'Franjas amarillas de alta visibilidad',desc:'Paso peatonal en amarillo para contraste máximo con la carpeta asfáltica oscura.'},
-      {svg:S.night('#F5C518'),label:'Retroreflexión nocturna',desc:'Visibilidad del cruce escolar en condiciones de iluminación reducida — resultado real a 80m.'},
-    ]
-  },
-  {
-    id:11, cat:'industrial', catLabel:'Señalización Industrial',
-    name:'Marcaje Industrial de Piso',
-    desc:'Demarcación de áreas de trabajo, pasillos, zonas de riesgo y señalización de seguridad en plantas industriales y almacenes.',
-    specs:[['Material','Pintura epóxica o preformado'],['Colores','Amarillo · Blanco · Rojo · Verde'],['Resistencia','Tráfico de montacargas'],['Durabilidad','2–4 años'],['Norma','NOM-003-SEGOB'],['Usos','Planta · Almacén · CEDIS']],
-    images:[
-      {svg:S.industrial(),label:'Planta de producción',desc:'Demarcación de pasillos y zonas de trabajo en CEDIS logístico — Amazon Tlajomulco, 2022.'},
-      {svg:S.texture('#F5C518'),label:'Cinta preformada de advertencia',desc:'Material preformado para bordes de advertencia y demarcación de zonas de peligro.'},
-      {svg:S.crosswalk('#25D366'),label:'Área de tránsito peatonal',desc:'Separación visual de zona peatonal y zona de montacargas con material de alto contraste.'},
-    ]
-  },
-  {
-    id:12, cat:'aeropuertos', catLabel:'Aeropuertos y Pistas',
-    name:'Señalización de Taxiway',
-    desc:'Marcas de calles de rodaje, umbrales y designaciones de pista conformes a ICAO Anexo 14 y reglamento de la AFAC.',
-    specs:[['Norma','ICAO Anexo 14 · AFAC'],['Colores','Amarillo · Blanco'],['Material','Preformado o termoplástico'],['Retroreflectividad','Clase I – II FAA'],['Resistencia','Tráfico aeronáutico'],['Durabilidad','3–5 años']],
-    images:[
-      {svg:S.airport(),label:'Calle de rodaje con designación',desc:'Marcas de taxiway con designación de pista y línea guía central — formato ICAO Anexo 14.'},
-      {svg:S.roadDashes(),label:'Línea central de rodaje',desc:'Línea de guía central continua en termoplástico preformado — resistente a jet blast.'},
-      {svg:S.night(),label:'Visibilidad nocturna en pista',desc:'Retroreflectividad de marcas de pista bajo iluminación de aeronave — verificación Class I FAA.'},
-    ]
-  },
-  {
-    id:13, cat:'estacionamientos', catLabel:'Estacionamientos',
-    name:'Delimitación de Cajones',
-    desc:'Señalización de cajones de estacionamiento, números, flechas de circulación, discapacitados y prohibiciones.',
-    specs:[['Material','Pintura acrílica o preformado'],['Ancho estándar','2.5m · 5m largo'],['Cajones especiales','3.8m discapacitados'],['Colores','Blanco · Azul · Amarillo'],['Durabilidad','1–3 años según tráfico'],['Extra','Numeración · Flechas · Signos']],
-    images:[
-      {svg:S.parking(),label:'Vista aérea de estacionamiento',desc:'Delimitación completa de estacionamiento corporativo — 450 cajones incluidos especiales.'},
-      {svg:S.crosswalk('#3D8EF0'),label:'Cajones de discapacidad',desc:'Zona de cajones para personas con discapacidad con símbolo internacional y franja de acceso.'},
-      {svg:S.texture('#3D8EF0'),label:'Numeración de cajones',desc:'Numeración en preformado blanco de alta durabilidad — resistente a luz UV y tráfico vehicular.'},
-    ]
-  },
-];
-
-/* ── APP STATE ────────────────────────────────────────────────────── */
-let activeFilter = 'all';
-let searchQuery = '';
-let lbProduct = null;
-let lbSlide = 0;
-
-/* ── RENDER FILTER BAR ────────────────────────────────────────────── */
-function renderFilters() {
-  const el = document.getElementById('filters');
-  el.innerHTML = CATS.map(c => `
-    <button class="filter-btn${c.id===activeFilter?' active':''}"
-      onclick="setFilter('${c.id}')" aria-pressed="${c.id===activeFilter}">
-      ${c.label}
-    </button>`).join('');
+function goTo(n,dir){
+  const prev=document.getElementById('s'+cur);
+  cur=Math.max(0,Math.min(TOTAL-1,n));
+  const next=document.getElementById('s'+cur);
+  if(prev===next)return;
+  prev.classList.remove('active');
+  prev.classList.add(dir>0?'out-left':'out-right');
+  next.classList.add('active');
+  setTimeout(()=>prev.classList.remove('out-left','out-right'),650);
+  updateUI();onSlideEnter();
 }
-
-function setFilter(id) {
-  activeFilter = id;
-  renderFilters();
-  renderGrid();
+function nav(d){
+  if(d>0&&cur<TOTAL-1)goTo(cur+d,1);
+  else if(d<0&&cur>0)goTo(cur+d,-1);
+  if(auto)resetAuto();
 }
+function updateUI(){
+  const t=(cur+1)+' / '+TOTAL;
+  document.getElementById('snum').textContent=t;
+  document.getElementById('sctr').textContent=t;
+  document.getElementById('bprev').disabled=cur===0;
+  document.getElementById('bnext').disabled=cur===TOTAL-1;
+  document.getElementById('pfill').style.width=((cur/(TOTAL-1))*100)+'%';
+  showCtrl();
+}
+function showCtrl(){
+  document.getElementById('controls').classList.add('vis');
+  clearTimeout(hideCtrl);
+  hideCtrl=setTimeout(()=>document.getElementById('controls').classList.remove('vis'),3200);
+}
+function onSlideEnter(){if(cur===2)runCounters();}
 
-/* ── RENDER GRID ──────────────────────────────────────────────────── */
-function getFiltered() {
-  return PRODUCTS.filter(p => {
-    const matchCat = activeFilter === 'all' || p.cat === activeFilter;
-    const q = searchQuery.toLowerCase();
-    const matchQ = !q || p.name.toLowerCase().includes(q) || p.desc.toLowerCase().includes(q) || p.catLabel.toLowerCase().includes(q);
-    return matchCat && matchQ;
+/* Counters */
+function runCounters(){
+  document.querySelectorAll('#s2 .stat-num-big[data-target]').forEach(el=>{
+    const tgt=+el.dataset.target,suf=el.dataset.suffix||'',dur=1800,s=performance.now();
+    (function tick(now){
+      const p=Math.min((now-s)/dur,1),e=1-Math.pow(1-p,3);
+      el.textContent=Math.round(e*tgt)+suf;
+      if(p<1)requestAnimationFrame(tick);
+    })(performance.now());
   });
 }
 
-function renderGrid() {
-  const grid = document.getElementById('grid');
-  const list = getFiltered();
-  if (!list.length) {
-    grid.innerHTML = `<div class="empty-state">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-      <p>Sin resultados para "<strong>${searchQuery}</strong>"</p>
-    </div>`;
-    return;
-  }
-  grid.innerHTML = list.map((p, i) => `
-    <article class="product-card" style="animation-delay:${i*0.04}s" aria-label="${p.name}">
-      <div class="card-visual" onclick="openLB(${p.id})" role="button" tabindex="0"
-        aria-label="Ver galería de ${p.name}"
-        onkeydown="if(event.key==='Enter')openLB(${p.id})">
-        ${p.images[0].svg}
-        ${p.badge ? `<span class="card-badge">${p.badge}</span>` : ''}
-        <div class="card-photo-count">
-          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
-            <rect x="2" y="4" width="12" height="9" rx="1.5"/>
-            <circle cx="8" cy="8" r="2"/>
-          </svg>
-          ${p.images.length} fotos
-        </div>
-      </div>
-      <div class="card-body">
-        <div class="card-cat">${p.catLabel}</div>
-        <div class="card-name">${p.name}</div>
-        <div class="card-desc">${p.desc}</div>
-        <div class="card-actions">
-          <button class="btn-gallery" onclick="openLB(${p.id})">
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
-              <rect x="2" y="3" width="12" height="10" rx="1.5"/>
-              <circle cx="8" cy="8" r="2.5"/>
-            </svg>
-            Ver galería
-          </button>
-          <a class="btn-quote"
-            href="https://wa.me/524426417958?text=Hola+SIVSA%2C+me+interesa+cotizar%3A+${encodeURIComponent(p.name)}"
-            target="_blank" rel="noopener">
-            <svg viewBox="0 0 16 16" fill="none"><path d="M13.8 10.5c-.2-.1-1.2-.6-1.4-.7-.2-.1-.3-.1-.5.1-.1.2-.5.6-.6.8-.1.1-.2.15-.4.05-.2-.1-.85-.32-1.6-1-.6-.53-1-1.18-1.1-1.38-.1-.2 0-.31.09-.41.09-.1.2-.24.3-.36.1-.12.13-.2.2-.33.07-.13.03-.25-.02-.35-.05-.1-.45-1.08-.62-1.48-.16-.38-.33-.33-.45-.34-.12-.01-.25-.01-.38-.01-.13 0-.35.05-.53.25-.18.2-.7.68-.7 1.66s.72 1.93.82 2.06c.1.13 1.4 2.15 3.4 3.01.48.2.85.33 1.14.42.48.15.92.13 1.26.08.38-.06 1.18-.48 1.35-.95.16-.47.16-.87.11-.95-.05-.08-.18-.13-.38-.23z" fill="currentColor"/><path d="M7.98 1a7 7 0 100 14A7 7 0 007.98 1zm4.3 11.3A5.8 5.8 0 017.98 14a5.86 5.86 0 01-3.17-.93l-.23-.14L2.1 13.5l.6-2.2-.15-.24A5.86 5.86 0 012 7.98a5.98 5.98 0 0110.28-4.14A5.98 5.98 0 0113.96 8a5.86 5.86 0 01-1.68 4.3z" fill="currentColor"/></svg>
-            Cotizar
-          </a>
-        </div>
-      </div>
-    </article>`).join('');
+/* Auto */
+function toggleAuto(){
+  auto=!auto;
+  document.getElementById('abtn').classList.toggle('on',auto);
+  document.getElementById('aring').classList.toggle('show',auto);
+  if(auto)startAuto();else clearAuto();
+}
+function startAuto(){
+  aStart=performance.now();
+  tickRing();
+  aTimer=setInterval(()=>{if(cur<TOTAL-1)nav(1);else toggleAuto();},aMs);
+}
+function clearAuto(){clearInterval(aTimer);document.getElementById('rcircle').style.strokeDashoffset=82;}
+function resetAuto(){clearAuto();if(auto)startAuto();}
+function tickRing(){
+  if(!auto)return;
+  const f=Math.min((performance.now()-aStart)/aMs,1);
+  document.getElementById('rcircle').style.strokeDashoffset=82-f*82;
+  requestAnimationFrame(tickRing);
 }
 
-/* ── LIGHTBOX ─────────────────────────────────────────────────────── */
-function openLB(id) {
-  lbProduct = PRODUCTS.find(p => p.id === id);
-  lbSlide = 0;
-  renderLB();
-  const lb = document.getElementById('lb');
-  lb.classList.add('open');
-  document.body.style.overflow = 'hidden';
-  lb.querySelector('.lb-close').focus();
+/* Fullscreen */
+function toggleFS(){
+  if(!document.fullscreenElement)document.documentElement.requestFullscreen().catch(()=>{});
+  else document.exitFullscreen();
 }
 
-function closeLB() {
-  document.getElementById('lb').classList.remove('open');
-  document.body.style.overflow = '';
+/* Help */
+let helpT;
+function showHelp(){
+  document.getElementById('toast').classList.add('show');
+  clearTimeout(helpT);
+  helpT=setTimeout(()=>document.getElementById('toast').classList.remove('show'),4000);
 }
 
-function navLB(dir) {
-  const len = lbProduct.images.length;
-  lbSlide = (lbSlide + dir + len) % len;
-  renderLBSlide();
-}
-
-function goSlide(i) {
-  lbSlide = i;
-  renderLBSlide();
-}
-
-function renderLB() {
-  const p = lbProduct;
-  document.getElementById('lb-cat').textContent = p.catLabel;
-  document.getElementById('lb-name').textContent = p.name;
-
-  // Specs
-  document.getElementById('lb-specs').innerHTML =
-    p.specs.map(([k,v]) => `<div class="lb-spec"><span class="spec-k">${k}</span><span class="spec-v">${v}</span></div>`).join('');
-
-  // WhatsApp
-  document.getElementById('lb-wa').href =
-    `https://wa.me/524426417958?text=Hola+SIVSA%2C+me+interesa+cotizar%3A+${encodeURIComponent(p.name)}`;
-
-  // Thumbnails
-  document.getElementById('lb-thumbs').innerHTML =
-    p.images.map((img, i) =>
-      `<div class="lb-thumb${i===lbSlide?' active':''}" onclick="goSlide(${i})" role="button" tabindex="0" aria-label="Vista ${i+1}">${img.svg}</div>`
-    ).join('');
-
-  renderLBSlide();
-}
-
-function renderLBSlide() {
-  const img = lbProduct.images[lbSlide];
-  const frame = document.getElementById('lb-frame');
-  const thumbs = document.getElementById('lb-thumbs');
-
-  // Update frame
-  frame.innerHTML = `
-    <div class="lb-slide active">
-      ${img.svg}
-      <div class="lb-slide-label">${img.label}</div>
-    </div>`;
-
-  // Update description
-  document.getElementById('lb-img-desc').textContent = img.desc;
-
-  // Update thumbnail active
-  thumbs.querySelectorAll('.lb-thumb').forEach((t, i) =>
-    t.classList.toggle('active', i === lbSlide));
-}
-
-/* ── KEYBOARD EVENTS ──────────────────────────────────────────────── */
-document.addEventListener('keydown', e => {
-  const lb = document.getElementById('lb');
-  if (!lb.classList.contains('open')) return;
-  if (e.key === 'Escape') closeLB();
-  if (e.key === 'ArrowLeft')  navLB(-1);
-  if (e.key === 'ArrowRight') navLB(1);
+/* Keyboard */
+document.addEventListener('keydown',e=>{
+  if(e.key==='ArrowRight'||e.key===' '){e.preventDefault();nav(1);}
+  else if(e.key==='ArrowLeft'){e.preventDefault();nav(-1);}
+  else if(e.key==='f'||e.key==='F')toggleFS();
+  else if(e.key==='a'||e.key==='A')toggleAuto();
+  else if(e.key==='h'||e.key==='H')showHelp();
+  else if(e.key==='Escape'){document.getElementById('toast').classList.remove('show');if(auto)toggleAuto();}
 });
 
-/* ── TOUCH SWIPE ──────────────────────────────────────────────────── */
-let touchX = 0;
-document.getElementById('lb').addEventListener('touchstart', e => { touchX = e.touches[0].clientX; }, {passive:true});
-document.getElementById('lb').addEventListener('touchend', e => {
-  const dx = e.changedTouches[0].clientX - touchX;
-  if (Math.abs(dx) > 48) navLB(dx < 0 ? 1 : -1);
-}, {passive:true});
+/* Swipe */
+let tx=0;
+document.addEventListener('touchstart',e=>{tx=e.touches[0].clientX;},{passive:true});
+document.addEventListener('touchend',e=>{if(Math.abs(e.changedTouches[0].clientX-tx)>60)nav(e.changedTouches[0].clientX<tx?1:-1);},{passive:true});
 
-/* ── SEARCH ───────────────────────────────────────────────────────── */
-document.getElementById('search').addEventListener('input', e => {
-  searchQuery = e.target.value;
-  renderGrid();
-});
+/* Mouse show controls */
+document.addEventListener('mousemove',showCtrl);
 
-/* ── INIT ─────────────────────────────────────────────────────────── */
-renderFilters();
-renderGrid();
+/* Grid snake */
+(function(){
+  const cv=document.getElementById('grid-cv'),ctx=cv.getContext('2d'),CELL=48;
+  let cols,rows,trail=[],dir={x:1,y:0},hd={x:0,y:0},st=0;
+  function resize(){cv.width=innerWidth;cv.height=innerHeight;cols=Math.ceil(cv.width/CELL)+2;rows=Math.ceil(cv.height/CELL)+2;if(!hd.x)hd={x:Math.floor(cols/4),y:Math.floor(rows/3)};}
+  function step(){st++;if(st>5&&Math.random()<.12){const o=dir.x!==0?[{x:0,y:1},{x:0,y:-1}]:[{x:1,y:0},{x:-1,y:0}];dir=o[Math.floor(Math.random()*o.length)];st=0;}hd={x:((hd.x+dir.x)%cols+cols)%cols,y:((hd.y+dir.y)%rows+rows)%rows};trail.unshift({x:hd.x,y:hd.y});if(trail.length>28)trail.pop();}
+  function draw(){ctx.clearRect(0,0,cv.width,cv.height);for(let i=trail.length-1;i>=0;i--){const t=trail[i],a=Math.pow(1-i/trail.length,2.4)*.5;ctx.fillStyle=`rgba(245,197,24,${a*.11})`;ctx.fillRect(t.x*CELL,t.y*CELL,CELL,CELL);if(a>.06){ctx.strokeStyle=`rgba(245,197,24,${a*.45})`;ctx.lineWidth=1;ctx.strokeRect(t.x*CELL+.5,t.y*CELL+.5,CELL-1,CELL-1);}}if(trail.length>0){const h=trail[0];ctx.fillStyle='rgba(245,197,24,0.16)';ctx.fillRect(h.x*CELL,h.y*CELL,CELL,CELL);}}
+  resize();window.addEventListener('resize',resize,{passive:true});
+  setInterval(step,80);(function loop(){requestAnimationFrame(loop);draw();})();
+})();
+
+/* Init */
+document.getElementById('s0').classList.add('active');
+updateUI();
 </script>
 </body>
 </html>
